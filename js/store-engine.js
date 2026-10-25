@@ -746,47 +746,7 @@ window.StacklyStore = {
   },
 
   openQuickView(productId) {
-    const product = STACKLY_PRODUCTS.find(p => p.id === productId) || STACKLY_PRODUCTS[0];
-    const modal = document.getElementById('quick-view-modal');
-    const content = document.getElementById('quick-view-content');
-    if (!modal || !content) return;
-
-    content.innerHTML = `
-      <div class="quick-view-grid">
-        <div>
-          <img src="${product.image}" alt="${product.name}" class="quick-view-img" />
-        </div>
-        <div style="display:flex;flex-direction:column">
-          <div style="font-size:0.8rem;text-transform:uppercase;color:var(--cyan-400);font-weight:700;letter-spacing:0.05em">${product.brand} · ${product.category}</div>
-          <h2 style="font-size:1.35rem;font-weight:800;color:var(--white);margin:0.4rem 0 0.8rem;line-height:1.3">${product.name}</h2>
-          
-          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
-            <span style="font-size:1.4rem;font-weight:900;color:var(--white)">${this.formatPrice(product.price)}</span>
-            <span style="font-size:0.95rem;color:var(--white-40);text-decoration:line-through">${this.formatPrice(product.originalPrice)}</span>
-            <span style="font-size:0.75rem;font-weight:700;color:#10b981;background:rgba(16,185,129,0.15);padding:0.2rem 0.5rem;border-radius:4px">${product.discount}</span>
-          </div>
-
-          <p style="font-size:0.875rem;color:var(--white-70);line-height:1.6;margin-bottom:1rem">${product.description}</p>
-
-          <div style="font-size:0.75rem;font-weight:700;color:var(--white-50);text-transform:uppercase;margin-bottom:0.4rem">Key Specifications:</div>
-          <div class="quick-view-specs">
-            ${product.specs.map(s => `<span class="spec-pill">✓ ${s}</span>`).join('')}
-          </div>
-
-          <div style="margin-top:auto;display:flex;gap:1rem;padding-top:1.5rem">
-            <button class="btn btn-primary btn-lg magnetic" style="flex:1" onclick="StacklyStore.addToCart('${product.id}'); StacklyStore.closeAllDrawers(); StacklyStore.openCart()">
-              Add to Cart 🛒
-            </button>
-            <button class="btn btn-secondary btn-icon" onclick="StacklyStore.toggleWishlist('${product.id}')" title="Save to Wishlist">
-              ❤️
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    window.location.href = '404.html';
   },
 
   openCheckout() {

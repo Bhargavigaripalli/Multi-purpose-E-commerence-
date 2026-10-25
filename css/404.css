@@ -1,0 +1,139 @@
+/* =====================================================
+   STACKLY ELECTRONICS — 404 ERROR PAGE STYLES
+   ===================================================== */
+
+.error-page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4);
+  background-color: var(--navy-950);
+  position: relative;
+  overflow: hidden;
+}
+
+.error-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.error-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(2,132,199,0.03) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(2,132,199,0.03) 1.5px, transparent 1.5px);
+  background-size: 60px 60px;
+}
+
+.error-orb-1 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: -100px;
+  left: -100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,19,97,0.15) 0%, transparent 70%);
+  filter: blur(50px);
+}
+
+.error-orb-2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: -100px;
+  right: -100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(2,132,199,0.15) 0%, transparent 70%);
+  filter: blur(50px);
+}
+
+.error-content-card {
+  background: rgba(14, 16, 21, 0.85);
+  border: var(--border-glass);
+  border-radius: var(--radius-2xl);
+  padding: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-card);
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  animation: scalePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Floating electronics animation */
+.error-illustration {
+  position: relative;
+  width: 250px;
+  height: 200px;
+  margin: 0 auto var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-robot {
+  font-size: 5.5rem;
+  animation: float 4s ease-in-out infinite;
+  z-index: 2;
+  position: relative;
+}
+
+.floating-gadgets-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.float-gadget-404 {
+  position: absolute;
+  font-size: 1.75rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.float-gadget-404.g1 { top: 20px; left: 10px; animation-delay: 0.5s; }
+.float-gadget-404.g2 { top: 120px; left: 30px; animation-delay: 1.5s; }
+.float-gadget-404.g3 { top: 30px; right: 10px; animation-delay: 1s; }
+.float-gadget-404.g4 { top: 130px; right: 20px; animation-delay: 2s; }
+
+.error-code-glow {
+  font-size: clamp(5rem, 15vw, 7.5rem);
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--cyan-400), var(--blue-500), var(--purple-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.05em;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 40px rgba(2,132,199,0.35);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.error-title {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+  color: var(--white);
+}
+
+.error-message {
+  font-size: var(--text-sm);
+  color: var(--white-60);
+  margin-bottom: var(--space-8);
+  line-height: 1.6;
+}
+
+.error-btn-wrap {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}

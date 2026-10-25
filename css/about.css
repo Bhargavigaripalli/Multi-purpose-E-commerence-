@@ -1,0 +1,252 @@
+/* =====================================================
+   STACKLY ELECTRONICS — ABOUT PAGE STYLES
+   ===================================================== */
+
+.about-hero {
+  background: var(--grad-hero);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px 0;
+  text-align: center;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(2,132,199,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2,132,199,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.about-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.about-hero-title {
+  font-size: var(--text-5xl);
+  font-weight: 900;
+  margin-bottom: var(--space-4);
+  line-height: 1.1;
+}
+
+.about-hero-desc {
+  font-size: var(--text-lg);
+  color: var(--white-70);
+  margin-bottom: var(--space-8);
+}
+
+/* Company Story */
+.company-story {
+  background: var(--navy-900);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.story-image-wrap {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card), var(--shadow-glow-blue);
+  border: var(--border-glass);
+}
+
+.story-image-wrap img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.story-image-wrap:hover img {
+  transform: scale(1.05);
+}
+
+.story-content h3 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-4);
+  color: var(--white);
+}
+
+.story-content p {
+  margin-bottom: var(--space-6);
+}
+
+/* Vision & Mission */
+.vision-mission {
+  background: var(--navy-800);
+  position: relative;
+}
+
+.vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+}
+
+.vm-card {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  transition: all var(--transition-slow);
+}
+
+.vm-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(2,132,199,0.35);
+}
+
+.vm-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.vm-card h3 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+}
+
+/* Journey Timeline */
+.journey-timeline {
+  background: var(--navy-900);
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: var(--grad-primary);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: -8px;
+  background-color: var(--navy-900);
+  border: 3px solid var(--cyan-400);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.left-timeline {
+  left: 0;
+}
+
+.right-timeline {
+  left: 50%;
+}
+
+.right-timeline::after {
+  left: -8px;
+}
+
+.timeline-content {
+  padding: var(--space-6);
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  position: relative;
+  border-radius: var(--radius-lg);
+}
+
+.timeline-year {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--cyan-400);
+  margin-bottom: var(--space-2);
+}
+
+.timeline-title {
+  font-size: var(--text-md);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+/* Team section */
+.team-section {
+  background: var(--navy-800);
+}
+
+/* Achievements */
+.achievements-section {
+  background: var(--navy-900);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .vm-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline::after {
+    left: 31px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  
+  .timeline-item::after {
+    left: 23px;
+  }
+  
+  .right-timeline {
+    left: 0%;
+  }
+  
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}

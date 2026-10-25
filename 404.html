@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Error 404 — Page not found. Stackly Electronics." />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Page Not Found — Stackly Electronics</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/404.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- Background Orbs and Grids -->
+  <div class="error-bg" aria-hidden="true">
+    <div class="error-orb-1"></div>
+    <div class="error-orb-2"></div>
+  </div>
+
+  <main class="error-page-container" role="main">
+    <div class="error-content-card">
+      
+      <!-- Exact Logo from Reference -->
+      <a href="index.html" class="logo" id="nav-brand-logo" aria-label="Stackly Home" style="margin-bottom:1.5rem;display:inline-flex">
+        <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo" style="height:44px">
+      </a>
+
+      <!-- Floating illustrations & gadgets -->
+      <div class="error-illustration" aria-hidden="true">
+        <div class="error-robot">🤖</div>
+        <div class="floating-gadgets-wrap">
+          <span class="float-gadget-404 g1">💻</span>
+          <span class="float-gadget-404 g2">🎧</span>
+          <span class="float-gadget-404 g3">📱</span>
+          <span class="float-gadget-404 g4">⌚</span>
+        </div>
+      </div>
+
+      <!-- 404 Text -->
+      <h1 class="error-code-glow">404</h1>
+      
+      <h2 class="error-title">Connection Lost in Space</h2>
+      <p class="error-message">The page you are looking for has been disassembled, relocated, or doesn't exist. Let's redirect you back to safety.</p>
+
+      <div class="error-btn-wrap">
+        <button type="button" onclick="window.history.length > 1 ? window.history.back() : window.location.href='index.html'" class="btn btn-secondary btn-lg magnetic" id="btn-go-back">
+          ← Go Back
+        </button>
+        <a href="index.html" class="btn btn-primary btn-lg magnetic" id="btn-back-to-home">
+          Back to Home 🏠
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/core.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

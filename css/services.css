@@ -1,0 +1,316 @@
+/* =====================================================
+   STACKLY ELECTRONICS — SERVICES PAGE STYLES
+   ===================================================== */
+
+.services-hero {
+  background: var(--grad-hero);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px 0;
+  text-align: center;
+}
+
+.services-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(2,132,199,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2,132,199,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.services-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.services-hero-title {
+  font-size: var(--text-5xl);
+  font-weight: 900;
+  margin-bottom: var(--space-4);
+  line-height: 1.1;
+}
+
+.services-hero-desc {
+  font-size: var(--text-lg);
+  color: var(--white-70);
+  margin-bottom: var(--space-8);
+}
+
+/* Services Grid */
+.core-services {
+  background: var(--navy-900);
+}
+
+.services-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.service-card-premium {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  transition: all var(--transition-slow);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.service-card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow-blue);
+  border-color: rgba(2,132,199,0.35);
+}
+
+.service-card-premium:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card-premium-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
+  background: var(--grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.service-card-premium h3 {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.service-card-premium p {
+  font-size: var(--text-sm);
+  color: var(--white-60);
+  margin-bottom: var(--space-6);
+  flex-grow: 1;
+}
+
+.service-card-premium-link {
+  color: var(--cyan-400);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.service-card-premium-link:hover {
+  color: var(--white);
+}
+
+/* Process Section */
+.process-section {
+  background: var(--navy-800);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  position: relative;
+}
+
+.process-step {
+  text-align: center;
+  position: relative;
+}
+
+.process-step-num {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--grad-secondary);
+  color: var(--white);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
+  box-shadow: var(--shadow-glow-cyan);
+  font-size: var(--text-lg);
+}
+
+.process-step h4 {
+  font-size: var(--text-md);
+  margin-bottom: var(--space-2);
+}
+
+.process-step p {
+  font-size: var(--text-sm);
+  color: var(--white-50);
+}
+
+/* Pricing/Plans Section */
+.pricing-section {
+  background: var(--navy-900);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.pricing-card {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  text-align: center;
+  position: relative;
+  transition: all var(--transition-slow);
+}
+
+.pricing-card.premium-plan {
+  background: linear-gradient(135deg, rgba(2,132,199,0.1), rgba(255,19,97,0.1));
+  border: 1px solid rgba(2,132,199,0.35);
+  transform: scale(1.05);
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.pricing-card.premium-plan:hover {
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow-blue);
+}
+
+.plan-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--grad-primary);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+.plan-name {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-4);
+}
+
+.plan-price {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  margin-bottom: var(--space-6);
+  color: var(--white);
+}
+
+.plan-price span {
+  font-size: var(--text-sm);
+  color: var(--white-50);
+  font-weight: 400;
+}
+
+.plan-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  text-align: left;
+}
+
+.plan-feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--white-70);
+}
+
+.plan-feature-item.disabled {
+  color: var(--white-30);
+  text-decoration: line-through;
+}
+
+.plan-feature-icon {
+  color: var(--cyan-400);
+}
+
+.plan-feature-item.disabled .plan-feature-icon {
+  color: var(--white-30);
+}
+
+/* Service CTA Section */
+.service-cta {
+  background: var(--grad-primary);
+  text-align: center;
+  padding: var(--section-padding) 0;
+}
+
+.service-cta h2 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-4);
+}
+
+.service-cta p {
+  font-size: var(--text-md);
+  color: rgba(255,255,255,0.8);
+  margin-bottom: var(--space-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .services-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+  .pricing-card.premium-plan {
+    transform: scale(1);
+  }
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-list-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}

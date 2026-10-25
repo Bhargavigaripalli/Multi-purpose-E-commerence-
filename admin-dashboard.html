@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin Dashboard — Stackly Electronics</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <style>
+    /* Premium Widgets styling */
+    .dashboard-panel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+    
+    .chart-container-placeholder {
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .chart-glowing-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      height: 120px;
+      position: relative;
+    }
+    
+    .chart-bar {
+      width: 16px;
+      background: var(--grad-primary);
+      border-radius: var(--radius-full);
+      height: 20px;
+      transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-glow-blue);
+    }
+
+    .calendar-placeholder {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .calendar-day-header {
+      font-size: 0.65rem;
+      color: var(--white-40);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .calendar-day-num {
+      padding: 0.5rem 0.25rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      color: var(--white-70);
+      background: var(--white-05);
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .calendar-day-num:hover {
+      background: rgba(2,132,199,0.15);
+      border-color: rgba(2,132,199,0.35);
+    }
+
+    .calendar-day-num.active {
+      background: var(--grad-primary);
+      color: var(--white);
+      border: none;
+      font-weight: 700;
+      box-shadow: var(--shadow-glow-blue);
+    }
+    
+    @media (max-width: 1024px) {
+      .dashboard-panel-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== Tab Shared Styles ===== */
+    .tab-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .tab-toolbar-left,
+    .tab-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .search-input-wrap {
+      position: relative;
+    }
+    .search-input-wrap .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--white-40);
+      font-size: var(--text-sm);
+      pointer-events: none;
+    }
+    .search-input {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      color: var(--white-80);
+      padding: 0.55rem 1rem 0.55rem 2.2rem;
+      font-size: var(--text-sm);
+      outline: none;
+      transition: var(--transition-base);
+      width: 240px;
+    }
+    .search-input:focus {
+      border-color: #0284C7;
+      box-shadow: 0 0 0 3px rgba(2,132,199,0.15);
+    }
+    .search-input::placeholder {
+      color: var(--white-40);
+    }
+    .tab-section-title {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--white-80);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Checkbox styling */
+    .dash-checkbox {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--white-40);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      vertical-align: middle;
+    }
+    .dash-checkbox:checked {
+      background: #0284C7;
+      border-color: #0284C7;
+    }
+    .dash-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      top: -1px;
+      left: 2px;
+      font-size: 11px;
+      color: white;
+    }
+
+    /* Status badges extended */
+    .status-badge.in-stock { color: #10B981; background: rgba(16,185,129,0.12); }
+    .status-badge.low-stock { color: #F59E0B; background: rgba(245,158,11,0.12); }
+    .status-badge.out-of-stock { color: #EF4444; background: rgba(239,68,68,0.12); }
+    .status-badge.active { color: #10B981; background: rgba(16,185,129,0.12); }
+    .status-badge.inactive { color: #6B7280; background: rgba(107,114,128,0.12); }
+    .status-badge.paid { color: #10B981; background: rgba(16,185,129,0.12); }
+    .status-badge.unpaid { color: #F59E0B; background: rgba(245,158,11,0.12); }
+    .status-badge.refunded { color: #FF1361; background: rgba(255,19,97,0.12); }
+    .status-badge.shipped { color: #06B6D4; background: rgba(6,182,212,0.12); }
+    .status-badge.delivered { color: #10B981; background: rgba(16,185,129,0.12); }
+
+    /* Action buttons */
+    .action-btn {
+      background: transparent;
+      border: 1px solid var(--border-glass);
+      color: var(--white-50);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: var(--transition-base);
+      margin-right: 4px;
+    }
+    .action-btn:hover { background: rgba(255,255,255,0.06); color: var(--white-80); }
+    .action-btn.edit:hover { border-color: #0284C7; color: #0284C7; }
+    .action-btn.delete:hover { border-color: #EF4444; color: #EF4444; }
+    .action-btn.reorder:hover { border-color: #F97316; color: #F97316; }
+    .action-btn.view:hover { border-color: #06B6D4; color: #06B6D4; }
+
+    /* ===== Orders Filter Tabs ===== */
+    .filter-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-6);
+      padding: 4px;
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-glass);
+    }
+    .filter-tab {
+      padding: 0.5rem 1rem;
+      border-radius: calc(var(--radius-xl) - 2px);
+      font-size: var(--text-xs);
+      color: var(--white-50);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: var(--transition-base);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .filter-tab:hover { color: var(--white-80); background: rgba(255,255,255,0.04); }
+    .filter-tab.active {
+      background: rgba(2,132,199,0.15);
+      color: #0284C7;
+      font-weight: 600;
+    }
+    .filter-tab .count {
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1px 7px;
+      font-size: 0.65rem;
+      margin-left: 4px;
+    }
+    .filter-tab.active .count {
+      background: rgba(2,132,199,0.2);
+    }
+
+    /* ===== Customer Stats ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .stat-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: var(--card-padding);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition-base);
+    }
+    .stat-card:hover {
+      border-color: rgba(2,132,199,0.2);
+      transform: translateY(-2px);
+    }
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .stat-icon.blue { background: rgba(2,132,199,0.12); }
+    .stat-icon.cyan { background: rgba(6,182,212,0.12); }
+    .stat-icon.purple { background: rgba(255,19,97,0.12); }
+    .stat-icon.orange { background: rgba(249,115,22,0.12); }
+    .stat-icon.green { background: rgba(16,185,129,0.12); }
+    .stat-icon.red { background: rgba(239,68,68,0.12); }
+    .stat-info .stat-label {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--white-40);
+      margin-bottom: 2px;
+    }
+    .stat-info .stat-number {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--white-80);
+    }
+
+    /* Customer avatar */
+    .customer-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: white;
+      margin-right: 8px;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+    .customer-avatar.av-1 { background: linear-gradient(135deg, #0284C7, #06B6D4); }
+    .customer-avatar.av-2 { background: linear-gradient(135deg, #FF1361, #a855f7); }
+    .customer-avatar.av-3 { background: linear-gradient(135deg, #F97316, #f59e0b); }
+    .customer-avatar.av-4 { background: linear-gradient(135deg, #10B981, #34d399); }
+    .customer-avatar.av-5 { background: linear-gradient(135deg, #EF4444, #f97316); }
+    .customer-avatar.av-6 { background: linear-gradient(135deg, #06B6D4, #3b82f6); }
+    .customer-avatar.av-7 { background: linear-gradient(135deg, #8B5CF6, #ec4899); }
+    .customer-avatar.av-8 { background: linear-gradient(135deg, #f59e0b, #10B981); }
+    .customer-name-cell { display: flex; align-items: center; }
+
+    /* ===== Category Grid ===== */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .category-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      text-align: center;
+      transition: var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    .category-card:hover {
+      border-color: rgba(2,132,199,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #0284C7, #06B6D4);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .category-card:hover::before { opacity: 1; }
+    .category-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .category-name {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--white-80);
+      margin-bottom: 0.35rem;
+    }
+    .category-count {
+      font-size: var(--text-xs);
+      color: var(--white-40);
+      margin-bottom: 1rem;
+    }
+    .category-actions {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* ===== Analytics Charts ===== */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 180px;
+      padding: 1rem 0;
+    }
+    .bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .bar-fill {
+      width: 100%;
+      max-width: 32px;
+      border-radius: 6px 6px 2px 2px;
+      background: linear-gradient(180deg, #0284C7, #06B6D4);
+      transition: height 1.2s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 0 12px rgba(2,132,199,0.25);
+      position: relative;
+    }
+    .bar-fill:hover {
+      box-shadow: 0 0 20px rgba(2,132,199,0.5);
+    }
+    .bar-label {
+      font-size: 0.6rem;
+      color: var(--white-40);
+      text-align: center;
+    }
+    .bar-value {
+      font-size: 0.6rem;
+      color: var(--white-50);
+    }
+
+    /* Donut chart */
+    .donut-chart-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+    .donut-chart {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .donut-chart::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #0f1629;
+    }
+    .donut-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .donut-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--text-xs);
+      color: var(--white-50);
+    }
+    .donut-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Top selling list */
+    .top-selling-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .top-selling-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.6rem 0.75rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: 10px;
+      transition: var(--transition-base);
+    }
+    .top-selling-item:hover { background: rgba(255,255,255,0.04); }
+    .top-rank {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .top-rank.r1 { background: rgba(249,115,22,0.15); color: #F97316; }
+    .top-rank.r2 { background: rgba(2,132,199,0.15); color: #0284C7; }
+    .top-rank.r3 { background: rgba(255,19,97,0.15); color: #FF1361; }
+    .top-rank.r4 { background: rgba(6,182,212,0.1); color: #06B6D4; }
+    .top-rank.r5 { background: rgba(107,114,128,0.1); color: #9CA3AF; }
+    .top-selling-name {
+      flex: 1;
+      font-size: var(--text-xs);
+      color: var(--white-80);
+    }
+    .top-selling-amt {
+      font-size: var(--text-xs);
+      color: var(--white-50);
+      font-weight: 600;
+    }
+
+    /* Activity list (analytics) */
+    .recent-activity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .recent-act-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .recent-act-item:last-child { border-bottom: none; }
+    .act-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .act-text {
+      font-size: var(--text-xs);
+      color: var(--white-80);
+      line-height: 1.5;
+    }
+    .act-time {
+      font-size: 0.65rem;
+      color: var(--white-40);
+      display: block;
+    }
+
+    /* ===== Inventory Alerts ===== */
+    .alert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .alert-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: var(--card-padding);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition-base);
+    }
+    .alert-card:hover {
+      transform: translateY(-2px);
+    }
+    .alert-card.critical { border-left: 3px solid #EF4444; }
+    .alert-card.low { border-left: 3px solid #F59E0B; }
+    .alert-card.healthy { border-left: 3px solid #10B981; }
+    .alert-card.overstocked { border-left: 3px solid #0284C7; }
+    .alert-num {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+    }
+    .alert-num.critical { color: #EF4444; }
+    .alert-num.low { color: #F59E0B; }
+    .alert-num.healthy { color: #10B981; }
+    .alert-num.overstocked { color: #0284C7; }
+    .alert-label {
+      font-size: var(--text-xs);
+      color: var(--white-50);
+    }
+    .stock-progress-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stock-mini-bar {
+      width: 60px;
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .stock-mini-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.8s ease;
+    }
+    .stock-mini-fill.critical { background: #EF4444; }
+    .stock-mini-fill.low { background: #F59E0B; }
+    .stock-mini-fill.good { background: #10B981; }
+    .stock-mini-fill.over { background: #0284C7; }
+
+    /* ===== Settings Form ===== */
+    .settings-sections {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .settings-section {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+    }
+    .settings-section-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--white-80);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      font-size: var(--text-xs);
+      color: var(--white-50);
+      font-weight: 500;
+    }
+    .form-input,
+    .form-textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 8px;
+      padding: 0.6rem 0.85rem;
+      color: var(--white-80);
+      font-size: var(--text-sm);
+      outline: none;
+      transition: var(--transition-base);
+    }
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: #0284C7;
+      box-shadow: 0 0 0 3px rgba(2,132,199,0.1);
+    }
+    .form-textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .toggle-row:last-child { border-bottom: none; }
+    .toggle-label-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .toggle-title {
+      font-size: var(--text-sm);
+      color: var(--white-80);
+    }
+    .toggle-desc {
+      font-size: var(--text-xs);
+      color: var(--white-40);
+    }
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: rgba(255,255,255,0.1);
+      border-radius: 24px;
+      transition: 0.3s;
+    }
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    .toggle-switch input:checked + .toggle-slider {
+      background: #0284C7;
+    }
+    .toggle-switch input:checked + .toggle-slider::before {
+      transform: translateX(20px);
+    }
+
+    /* ===== Responsive for tabs ===== */
+    @media (max-width: 768px) {
+      .analytics-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .form-grid { grid-template-columns: 1fr; }
+      .donut-chart-wrap { flex-direction: column; }
+      .search-input { width: 180px; }
+      .filter-tabs { gap: 4px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .bar-chart { gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar" id="dashboardSidebar" role="complementary" aria-label="Sidebar navigation">
+      <div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:1.5rem">
+        <a href="index.html" class="sidebar-logo" aria-label="Stackly Home">
+          <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo" style="height:36px">
+        </a>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">✕</button>
+      </div>
+
+      <nav class="sidebar-menu" id="adminSidebarMenu">
+        <a href="#" class="sidebar-menu-item active" data-tab="tab-dashboard">
+          <span class="sidebar-menu-item-icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="sidebar-menu-item" data-tab="tab-products">
+          <span class="sidebar-menu-item-icon">📦</span>
+          <span>Products</span>
+        </a>
+        <a href="#" class="sidebar-menu-item" data-tab="tab-orders">
+          <span class="sidebar-menu-item-icon">🛒</span>
+          <span>Orders</span>
+        </a>
+        <a href="#" class="sidebar-menu-item" data-tab="tab-customers">
+          <span class="sidebar-menu-item-icon">👥</span>
+          <span>Customers</span>
+        </a>
+        <a href="#" class="sidebar-menu-item" data-tab="tab-categories">
+          <span class="sidebar-menu-item-icon">🏷️</span>
+          <span>Categories</span>
+        </a>
+        <a href="#" class="sidebar-menu-item" data-tab="tab-analytics">
+          <span class="sidebar-menu-item-icon">📈</span>
+          <span>Analytics</span>
+        </a>
+        <a href="#" class="sidebar-menu-item" data-tab="tab-inventory">
+          <span class="sidebar-menu-item-icon">📋</span>
+          <span>Inventory</span>
+        </a>
+        <a href="#" class="sidebar-menu-item" data-tab="tab-settings">
+          <span class="sidebar-menu-item-icon">⚙️</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="sidebar-menu-item" style="color:var(--orange-400)">
+          <span class="sidebar-menu-item-icon">🚪</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Container -->
+    <main class="dashboard-main" role="main">
+      
+      <!-- Top header -->
+      <header class="dashboard-header">
+        <div class="dashboard-title-wrap">
+          <h1>Admin Dashboard</h1>
+          <p>Welcome back, Administrator. Here's your real-time tech hub update.</p>
+        </div>
+
+        <div class="dashboard-actions-wrap">
+          <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle Sidebar Menu">☰</button>
+          
+          <button class="notif-btn" aria-label="Notifications" onclick="location.href='404.html'">
+            🔔
+            <span class="notif-badge-dot"></span>
+          </button>
+          
+          <div class="dashboard-user-profile" onclick="location.href='404.html'" style="cursor:pointer">
+            <div class="dashboard-user-avatar">AD</div>
+            <span class="dashboard-user-name">Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- KPI Grid Row -->
+      <div id="tab-dashboard" class="dashboard-tab-content" style="display:block;">
+      <section class="kpi-row" aria-label="Key Performance Indicators">
+        <!-- Card 1 -->
+        <div class="kpi-card">
+          <div class="kpi-info-wrap">
+            <span class="kpi-title">Total Revenue</span>
+            <span class="kpi-value" data-counter data-prefix="₹" data-target="1845920" data-duration="2000">₹1,845,920</span>
+            <span class="kpi-change up">▲ +12.4% this month</span>
+          </div>
+          <div class="kpi-icon blue">💰</div>
+        </div>
+        <!-- Card 2 -->
+        <div class="kpi-card">
+          <div class="kpi-info-wrap">
+            <span class="kpi-title">Active Orders</span>
+            <span class="kpi-value" data-counter data-target="384" data-duration="1500">384</span>
+            <span class="kpi-change up">▲ +8.2% vs yesterday</span>
+          </div>
+          <div class="kpi-icon purple">📦</div>
+        </div>
+        <!-- Card 3 -->
+        <div class="kpi-card">
+          <div class="kpi-info-wrap">
+            <span class="kpi-title">New Registrations</span>
+            <span class="kpi-value" data-counter data-target="1204" data-duration="1800">1,204</span>
+            <span class="kpi-change down">▼ -2.1% this week</span>
+          </div>
+          <div class="kpi-icon cyan">👥</div>
+        </div>
+        <!-- Card 4 -->
+        <div class="kpi-card">
+          <div class="kpi-info-wrap">
+            <span class="kpi-title">Conversion Rate</span>
+            <span class="kpi-value" data-counter data-target="4.8" data-suffix="%" data-decimals="1" data-duration="1200">4.8%</span>
+            <span class="kpi-change up">▲ +0.5% this month</span>
+          </div>
+          <div class="kpi-icon orange">📈</div>
+        </div>
+      </section>
+
+      <!-- Content Panels Grid -->
+      <div class="dashboard-panel-grid">
+        <!-- Sales chart card -->
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <span class="dashboard-card-title">Revenue & Sales Trends</span>
+            <button class="btn btn-secondary btn-sm" onclick="location.href='404.html'">Filter</button>
+          </div>
+          <div class="chart-container-placeholder">
+            <div class="chart-glowing-bars" id="revenueChartPlaceholder">
+              <div class="chart-bar" style="height: 35px"></div>
+              <div class="chart-bar" style="height: 65px"></div>
+              <div class="chart-bar" style="height: 50px"></div>
+              <div class="chart-bar" style="height: 90px"></div>
+              <div class="chart-bar" style="height: 80px"></div>
+              <div class="chart-bar" style="height: 110px"></div>
+              <div class="chart-bar" style="height: 95px"></div>
+              <div class="chart-bar" style="height: 120px"></div>
+            </div>
+            <div style="position:absolute;bottom:10px;display:flex;justify-content:space-between;width:80%;font-size:0.65rem;color:var(--white-40)">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inventory Overview Widget -->
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <span class="dashboard-card-title">Inventory Overview</span>
+            <button class="btn btn-secondary btn-sm" onclick="location.href='404.html'">Manage</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);margin-bottom:4px">
+                <span>MacBook Pro M3 Stock</span>
+                <span style="color:var(--orange-400)">Low (8 left)</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 12%; background: var(--grad-accent)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);margin-bottom:4px">
+                <span>Sony WH-1000XM5 Stock</span>
+                <span style="color:#10B981">Good (124 left)</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 78%; background: var(--grad-secondary)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);margin-bottom:4px">
+                <span>Garmin Fenix 8 Wearables</span>
+                <span style="color:#F59E0B">Moderate (45 left)</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 45%; background: var(--grad-primary)"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Dash Info Row -->
+      <div class="dashboard-grid">
+        <!-- Recent Orders Card -->
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <span class="dashboard-card-title">Recent Transactions</span>
+            <button class="btn btn-secondary btn-sm" onclick="location.href='404.html'">All Orders</button>
+          </div>
+          <div class="table-responsive">
+            <table class="dashboard-table" aria-label="Recent Orders Table">
+              <thead>
+                <tr>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#STK-9241</td>
+                  <td>Rajesh Kumar</td>
+                  <td>MacBook Pro M3</td>
+                  <td>₹1,49,900</td>
+                  <td><span class="status-badge completed">● Completed</span></td>
+                </tr>
+                <tr>
+                  <td>#STK-9240</td>
+                  <td>Divya Singh</td>
+                  <td>Sony WH-1000XM5</td>
+                  <td>₹29,990</td>
+                  <td><span class="status-badge pending">● Pending</span></td>
+                </tr>
+                <tr>
+                  <td>#STK-9239</td>
+                  <td>Aman Gupta</td>
+                  <td>Garmin ProWatch</td>
+                  <td>₹42,900</td>
+                  <td><span class="status-badge processing">● Processing</span></td>
+                </tr>
+                <tr>
+                  <td>#STK-9238</td>
+                  <td>Sunita Roy</td>
+                  <td>Galaxy S25 Ultra</td>
+                  <td>₹1,24,999</td>
+                  <td><span class="status-badge cancelled">● Cancelled</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Activity Timeline / Calendar Panel -->
+        <div style="display:flex;flex-direction:column;gap:var(--space-6)">
+          <!-- Calendar -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dashboard-card-title">Admin Calendar</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--cyan-400);font-weight:700">
+              <span>July 2026</span>
+              <span>Today: July 02</span>
+            </div>
+            <div class="calendar-placeholder">
+              <span class="calendar-day-header">Su</span>
+              <span class="calendar-day-header">Mo</span>
+              <span class="calendar-day-header">Tu</span>
+              <span class="calendar-day-header">We</span>
+              <span class="calendar-day-header">Th</span>
+              <span class="calendar-day-header">Fr</span>
+              <span class="calendar-day-header">Sa</span>
+              
+              <span class="calendar-day-num" style="grid-column-start: 4">1</span>
+              <span class="calendar-day-num active">2</span>
+              <span class="calendar-day-num">3</span>
+              <span class="calendar-day-num">4</span>
+              <span class="calendar-day-num">5</span>
+              <span class="calendar-day-num">6</span>
+              <span class="calendar-day-num">7</span>
+              <span class="calendar-day-num">8</span>
+              <span class="calendar-day-num">9</span>
+              <span class="calendar-day-num">10</span>
+              <span class="calendar-day-num">11</span>
+              <span class="calendar-day-num">12</span>
+              <span class="calendar-day-num">13</span>
+              <span class="calendar-day-num">14</span>
+            </div>
+          </div>
+
+          <!-- Activity Timeline -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dashboard-card-title">System Activity</span>
+            </div>
+            <div class="activity-timeline">
+              <div class="activity-item">
+                <div class="activity-icon-wrap">💵</div>
+                <div class="activity-body">
+                  <span class="activity-title">New payout released (₹1,49,900)</span>
+                  <span class="activity-time">10 minutes ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon-wrap" style="color:var(--orange-400)">⚡</div>
+                <div class="activity-body">
+                  <span class="activity-title">Low stock notification for MacBook</span>
+                  <span class="activity-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon-wrap" style="color:var(--cyan-400)">🔧</div>
+                <div class="activity-body">
+                  <span class="activity-title">Database synchronization completed</span>
+                  <span class="activity-time">5 hours ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div> <!-- end tab-dashboard -->
+
+      <!-- Other Tabs Placeholders -->
+      <div id="tab-products" class="dashboard-tab-content" style="display:none; padding:2rem;">
+        <!-- Toolbar -->
+        <div class="tab-toolbar">
+          <div class="tab-toolbar-left">
+            <button class="btn btn-primary btn-sm" onclick="location.href='404.html'">+ Add New Product</button>
+            <button class="btn btn-outline btn-sm" onclick="location.href='404.html'">Export CSV</button>
+          </div>
+          <div class="tab-toolbar-right">
+            <div class="search-input-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" class="search-input" placeholder="Search products..." />
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <span class="dashboard-card-title">All Products</span>
+            <span style="font-size:var(--text-xs);color:var(--white-40)">Showing 8 of 156 products</span>
+          </div>
+          <div class="table-responsive">
+            <table class="dashboard-table" aria-label="Products Table">
+              <thead>
+                <tr>
+                  <th scope="col"><input type="checkbox" class="dash-checkbox" aria-label="Select all" /></th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">SKU</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Price (₹)</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" class="dash-checkbox" /></td>
+                  <td>MacBook Pro M3 Max 16"</td>
+                  <td>STK-LAP-001</td>
+                  <td>Laptops</td>
+                  <td>₹2,49,900</td>
+                  <td>8</td>
+                  <td><span class="status-badge low-stock">● Low Stock</span></td>
+                  <td>
+                    <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+                    <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="dash-checkbox" /></td>
+                  <td>Samsung Galaxy S25 Ultra</td>
+                  <td>STK-PHN-012</td>
+                  <td>Smartphones</td>
+                  <td>₹1,34,999</td>
+                  <td>45</td>
+                  <td><span class="status-badge in-stock">● In Stock</span></td>
+                  <td>
+                    <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+                    <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="dash-checkbox" /></td>
+                  <td>Sony WH-1000XM5 Headphones</td>
+                  <td>STK-AUD-045</td>
+                  <td>Headphones</td>
+                  <td>₹29,990</td>
+                  <td>124</td>
+                  <td><span class="status-badge in-stock">● In Stock</span></td>
+                  <td>
+                    <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+                    <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="dash-checkbox" /></td>
+                  <td>Apple Watch Ultra 3</td>
+                  <td>STK-WTH-023</td>
+                  <td>Smartwatches</td>
+                  <td>₹89,900</td>
+                  <td>32</td>
+                  <td><span class="status-badge in-stock">● In Stock</span></td>
+                  <td>
+                    <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+                    <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="dash-checkbox" /></td>
+                  <td>iPad Pro M4 12.9"</td>
+                  <td>STK-TAB-008</td>
+                  <td>Tablets</td>
+                  <td>₹1,19,900</td>
+                  <td>0</td>
+                  <td><span class="status-badge out-of-stock">● Out of Stock</span></td>
+                  <td>
+                    <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+                    <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="dash-checkbox" /></td>
+                  <td>Canon EOS R6 Mark III</td>
+                  <td>STK-CAM-017</td>
+                  <td>Cameras</td>
+                  <td>₹2,15,990</td>
+                  <td>14</td>
+                  <td><span class="status-badge in-stock">● In Stock</span></td>
+                  <td>
+                    <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+                    <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="dash-checkbox" /></td>
+                  <td>ASUS ROG Ally X Gaming</td>
+                  <td>STK-GMG-031</td>
+                  <td>Gaming</td>
+                  <td>₹74,990</td>
+                  <td>5</td>
+                  <td><span class="status-badge low-stock">● Low Stock</span></td>
+                  <td>
+                    <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+                    <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="dash-checkbox" /></td>
+                  <td>Anker 737 Power Bank 24K</td>
+                  <td>STK-ACC-092</td>
+                  <td>Accessories</td>
+                  <td>₹8,999</td>
+                  <td>210</td>
+                  <td><span class="status-badge in-stock">● In Stock</span></td>
+                  <td>
+                    <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+                    <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div id="tab-orders" class="dashboard-tab-content" style="display:none; padding:2rem;">
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="filter-tab active">All <span class="count">384</span></button>
+          <button class="filter-tab">Pending <span class="count">42</span></button>
+          <button class="filter-tab">Processing <span class="count">67</span></button>
+          <button class="filter-tab">Shipped <span class="count">128</span></button>
+          <button class="filter-tab">Delivered <span class="count">135</span></button>
+          <button class="filter-tab">Cancelled <span class="count">12</span></button>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <span class="dashboard-card-title">Order Management</span>
+            <button class="btn btn-secondary btn-sm" onclick="location.href='404.html'">Export Orders</button>
+          </div>
+          <div class="table-responsive">
+            <table class="dashboard-table" aria-label="Orders Table">
+              <thead>
+                <tr>
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Products</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Payment</th>
+                  <th scope="col">Fulfillment</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="color:#0284C7;font-weight:600">#STK-9241</td>
+                  <td>Rajesh Kumar</td>
+                  <td>MacBook Pro M3 Max</td>
+                  <td>06 Jul 2026</td>
+                  <td>₹2,49,900</td>
+                  <td><span class="status-badge paid">● Paid</span></td>
+                  <td><span class="status-badge delivered">● Delivered</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td style="color:#0284C7;font-weight:600">#STK-9240</td>
+                  <td>Divya Singh</td>
+                  <td>Sony WH-1000XM5</td>
+                  <td>05 Jul 2026</td>
+                  <td>₹29,990</td>
+                  <td><span class="status-badge paid">● Paid</span></td>
+                  <td><span class="status-badge shipped">● Shipped</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td style="color:#0284C7;font-weight:600">#STK-9239</td>
+                  <td>Aman Gupta</td>
+                  <td>Galaxy S25 Ultra</td>
+                  <td>05 Jul 2026</td>
+                  <td>₹1,34,999</td>
+                  <td><span class="status-badge unpaid">● Unpaid</span></td>
+                  <td><span class="status-badge pending">● Pending</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td style="color:#0284C7;font-weight:600">#STK-9238</td>
+                  <td>Sunita Roy</td>
+                  <td>Apple Watch Ultra 3</td>
+                  <td>04 Jul 2026</td>
+                  <td>₹89,900</td>
+                  <td><span class="status-badge paid">● Paid</span></td>
+                  <td><span class="status-badge processing">● Processing</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td style="color:#0284C7;font-weight:600">#STK-9237</td>
+                  <td>Priya Sharma</td>
+                  <td>Canon EOS R6 III + Lens</td>
+                  <td>04 Jul 2026</td>
+                  <td>₹2,65,980</td>
+                  <td><span class="status-badge paid">● Paid</span></td>
+                  <td><span class="status-badge shipped">● Shipped</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td style="color:#0284C7;font-weight:600">#STK-9236</td>
+                  <td>Vikram Mehta</td>
+                  <td>ASUS ROG Ally X</td>
+                  <td>03 Jul 2026</td>
+                  <td>₹74,990</td>
+                  <td><span class="status-badge refunded">● Refunded</span></td>
+                  <td><span class="status-badge cancelled">● Cancelled</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td style="color:#0284C7;font-weight:600">#STK-9235</td>
+                  <td>Neha Patel</td>
+                  <td>iPad Pro M4 12.9"</td>
+                  <td>03 Jul 2026</td>
+                  <td>₹1,19,900</td>
+                  <td><span class="status-badge paid">● Paid</span></td>
+                  <td><span class="status-badge delivered">● Delivered</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td style="color:#0284C7;font-weight:600">#STK-9234</td>
+                  <td>Arjun Reddy</td>
+                  <td>Anker 737 Power Bank ×2</td>
+                  <td>02 Jul 2026</td>
+                  <td>₹17,998</td>
+                  <td><span class="status-badge paid">● Paid</span></td>
+                  <td><span class="status-badge delivered">● Delivered</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-customers" class="dashboard-tab-content" style="display:none; padding:2rem;">
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">👥</div>
+            <div class="stat-info">
+              <span class="stat-label">Total Customers</span>
+              <span class="stat-number">1,204</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">✨</div>
+            <div class="stat-info">
+              <span class="stat-label">New This Month</span>
+              <span class="stat-number">86</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon cyan">🔥</div>
+            <div class="stat-info">
+              <span class="stat-label">Active Users</span>
+              <span class="stat-number">743</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">🔄</div>
+            <div class="stat-info">
+              <span class="stat-label">Returning</span>
+              <span class="stat-number">312</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customers Table -->
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <span class="dashboard-card-title">Customer Directory</span>
+            <div class="search-input-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" class="search-input" placeholder="Search customers..." />
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="dashboard-table" aria-label="Customers Table">
+              <thead>
+                <tr>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Orders</th>
+                  <th scope="col">Spent (₹)</th>
+                  <th scope="col">Joined</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="customer-name-cell"><span class="customer-avatar av-1">RK</span> Rajesh Kumar</div></td>
+                  <td>rajesh.k@email.com</td>
+                  <td>+91 98765 43210</td>
+                  <td>12</td>
+                  <td>₹4,85,600</td>
+                  <td>Jan 2024</td>
+                  <td><span class="status-badge active">● Active</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="customer-name-cell"><span class="customer-avatar av-2">DS</span> Divya Singh</div></td>
+                  <td>divya.singh@email.com</td>
+                  <td>+91 87654 32109</td>
+                  <td>8</td>
+                  <td>₹1,92,450</td>
+                  <td>Mar 2024</td>
+                  <td><span class="status-badge active">● Active</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="customer-name-cell"><span class="customer-avatar av-3">AG</span> Aman Gupta</div></td>
+                  <td>aman.g@email.com</td>
+                  <td>+91 76543 21098</td>
+                  <td>5</td>
+                  <td>₹3,24,800</td>
+                  <td>Jun 2024</td>
+                  <td><span class="status-badge active">● Active</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="customer-name-cell"><span class="customer-avatar av-4">SR</span> Sunita Roy</div></td>
+                  <td>sunita.r@email.com</td>
+                  <td>+91 65432 10987</td>
+                  <td>3</td>
+                  <td>₹89,900</td>
+                  <td>Sep 2024</td>
+                  <td><span class="status-badge inactive">● Inactive</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="customer-name-cell"><span class="customer-avatar av-5">PS</span> Priya Sharma</div></td>
+                  <td>priya.sharma@email.com</td>
+                  <td>+91 54321 09876</td>
+                  <td>15</td>
+                  <td>₹7,12,350</td>
+                  <td>Nov 2023</td>
+                  <td><span class="status-badge active">● Active</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="customer-name-cell"><span class="customer-avatar av-6">VM</span> Vikram Mehta</div></td>
+                  <td>vikram.m@email.com</td>
+                  <td>+91 43210 98765</td>
+                  <td>2</td>
+                  <td>₹74,990</td>
+                  <td>Feb 2025</td>
+                  <td><span class="status-badge inactive">● Inactive</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="customer-name-cell"><span class="customer-avatar av-7">NP</span> Neha Patel</div></td>
+                  <td>neha.p@email.com</td>
+                  <td>+91 32109 87654</td>
+                  <td>9</td>
+                  <td>₹2,45,700</td>
+                  <td>Apr 2024</td>
+                  <td><span class="status-badge active">● Active</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="customer-name-cell"><span class="customer-avatar av-8">AR</span> Arjun Reddy</div></td>
+                  <td>arjun.reddy@email.com</td>
+                  <td>+91 21098 76543</td>
+                  <td>6</td>
+                  <td>₹1,56,200</td>
+                  <td>Jul 2024</td>
+                  <td><span class="status-badge active">● Active</span></td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-categories" class="dashboard-tab-content" style="display:none; padding:2rem;">
+        <div class="tab-toolbar">
+          <h2 class="tab-section-title" style="margin:0">Product Categories</h2>
+          <button class="btn btn-primary btn-sm" onclick="location.href='404.html'">+ Add Category</button>
+        </div>
+
+        <div class="category-grid">
+          <div class="category-card">
+            <span class="category-emoji">💻</span>
+            <div class="category-name">Laptops</div>
+            <div class="category-count">24 products</div>
+            <span class="status-badge active" style="margin-bottom:0.75rem;display:inline-block">● Active</span>
+            <div class="category-actions">
+              <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+              <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+            </div>
+          </div>
+          <div class="category-card">
+            <span class="category-emoji">📱</span>
+            <div class="category-name">Smartphones</div>
+            <div class="category-count">38 products</div>
+            <span class="status-badge active" style="margin-bottom:0.75rem;display:inline-block">● Active</span>
+            <div class="category-actions">
+              <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+              <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+            </div>
+          </div>
+          <div class="category-card">
+            <span class="category-emoji">🎧</span>
+            <div class="category-name">Headphones</div>
+            <div class="category-count">19 products</div>
+            <span class="status-badge active" style="margin-bottom:0.75rem;display:inline-block">● Active</span>
+            <div class="category-actions">
+              <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+              <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+            </div>
+          </div>
+          <div class="category-card">
+            <span class="category-emoji">⌚</span>
+            <div class="category-name">Smartwatches</div>
+            <div class="category-count">15 products</div>
+            <span class="status-badge active" style="margin-bottom:0.75rem;display:inline-block">● Active</span>
+            <div class="category-actions">
+              <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+              <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+            </div>
+          </div>
+          <div class="category-card">
+            <span class="category-emoji">📲</span>
+            <div class="category-name">Tablets</div>
+            <div class="category-count">12 products</div>
+            <span class="status-badge active" style="margin-bottom:0.75rem;display:inline-block">● Active</span>
+            <div class="category-actions">
+              <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+              <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+            </div>
+          </div>
+          <div class="category-card">
+            <span class="category-emoji">📷</span>
+            <div class="category-name">Cameras</div>
+            <div class="category-count">21 products</div>
+            <span class="status-badge active" style="margin-bottom:0.75rem;display:inline-block">● Active</span>
+            <div class="category-actions">
+              <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+              <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+            </div>
+          </div>
+          <div class="category-card">
+            <span class="category-emoji">🎮</span>
+            <div class="category-name">Gaming</div>
+            <div class="category-count">17 products</div>
+            <span class="status-badge active" style="margin-bottom:0.75rem;display:inline-block">● Active</span>
+            <div class="category-actions">
+              <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+              <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+            </div>
+          </div>
+          <div class="category-card">
+            <span class="category-emoji">🔌</span>
+            <div class="category-name">Accessories</div>
+            <div class="category-count">42 products</div>
+            <span class="status-badge active" style="margin-bottom:0.75rem;display:inline-block">● Active</span>
+            <div class="category-actions">
+              <button class="action-btn edit" onclick="location.href='404.html'">Edit</button>
+              <button class="action-btn delete" onclick="location.href='404.html'">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-analytics" class="dashboard-tab-content" style="display:none; padding:2rem;">
+        <!-- KPI Row -->
+        <section class="kpi-row" style="margin-bottom:var(--space-6)">
+          <div class="kpi-card">
+            <div class="kpi-info-wrap">
+              <span class="kpi-title">Total Sales</span>
+              <span class="kpi-value">₹18,45,920</span>
+              <span class="kpi-change up">▲ +12.4% this month</span>
+            </div>
+            <div class="kpi-icon blue">💰</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-info-wrap">
+              <span class="kpi-title">Orders Today</span>
+              <span class="kpi-value">47</span>
+              <span class="kpi-change up">▲ +8 vs yesterday</span>
+            </div>
+            <div class="kpi-icon purple">📦</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-info-wrap">
+              <span class="kpi-title">Avg Order Value</span>
+              <span class="kpi-value">₹4,807</span>
+              <span class="kpi-change up">▲ +3.2% this week</span>
+            </div>
+            <div class="kpi-icon cyan">📊</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-info-wrap">
+              <span class="kpi-title">Return Rate</span>
+              <span class="kpi-value">2.4%</span>
+              <span class="kpi-change down">▼ -0.3% improvement</span>
+            </div>
+            <div class="kpi-icon orange">↩️</div>
+          </div>
+        </section>
+
+        <!-- Charts Grid -->
+        <div class="analytics-grid">
+          <!-- Revenue Bar Chart -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dashboard-card-title">Monthly Revenue</span>
+              <button class="btn btn-secondary btn-sm" onclick="location.href='404.html'">Download</button>
+            </div>
+            <div class="bar-chart">
+              <div class="bar-col">
+                <span class="bar-value">₹8.2L</span>
+                <div class="bar-fill" style="height:45%"></div>
+                <span class="bar-label">Jan</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">₹10.5L</span>
+                <div class="bar-fill" style="height:58%"></div>
+                <span class="bar-label">Feb</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">₹9.1L</span>
+                <div class="bar-fill" style="height:50%"></div>
+                <span class="bar-label">Mar</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">₹14.3L</span>
+                <div class="bar-fill" style="height:79%"></div>
+                <span class="bar-label">Apr</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">₹12.8L</span>
+                <div class="bar-fill" style="height:71%"></div>
+                <span class="bar-label">May</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">₹18.1L</span>
+                <div class="bar-fill" style="height:100%"></div>
+                <span class="bar-label">Jun</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">₹15.6L</span>
+                <div class="bar-fill" style="height:86%"></div>
+                <span class="bar-label">Jul</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Traffic Donut -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dashboard-card-title">Traffic Sources</span>
+            </div>
+            <div class="donut-chart-wrap">
+              <div class="donut-chart" style="background: conic-gradient(#0284C7 0deg 137deg, #06B6D4 137deg 216deg, #FF1361 216deg 280deg, #F97316 280deg 324deg, #6B7280 324deg 360deg);"></div>
+              <div class="donut-legend">
+                <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#0284C7"></span> Direct — 38%</div>
+                <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#06B6D4"></span> Organic — 22%</div>
+                <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#FF1361"></span> Social — 18%</div>
+                <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#F97316"></span> Referral — 12%</div>
+                <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#6B7280"></span> Other — 10%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="analytics-grid">
+          <!-- Top Selling Products -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dashboard-card-title">Top Selling Products</span>
+            </div>
+            <div class="top-selling-list">
+              <div class="top-selling-item">
+                <span class="top-rank r1">1</span>
+                <span class="top-selling-name">Samsung Galaxy S25 Ultra</span>
+                <span class="top-selling-amt">₹12,14,910</span>
+              </div>
+              <div class="top-selling-item">
+                <span class="top-rank r2">2</span>
+                <span class="top-selling-name">MacBook Pro M3 Max 16"</span>
+                <span class="top-selling-amt">₹9,99,600</span>
+              </div>
+              <div class="top-selling-item">
+                <span class="top-rank r3">3</span>
+                <span class="top-selling-name">Sony WH-1000XM5</span>
+                <span class="top-selling-amt">₹5,69,810</span>
+              </div>
+              <div class="top-selling-item">
+                <span class="top-rank r4">4</span>
+                <span class="top-selling-name">Apple Watch Ultra 3</span>
+                <span class="top-selling-amt">₹3,59,600</span>
+              </div>
+              <div class="top-selling-item">
+                <span class="top-rank r5">5</span>
+                <span class="top-selling-name">Canon EOS R6 Mark III</span>
+                <span class="top-selling-amt">₹2,15,990</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dashboard-card-title">Recent Activity</span>
+            </div>
+            <div class="recent-activity-list">
+              <div class="recent-act-item">
+                <span class="act-dot" style="background:#10B981"></span>
+                <div>
+                  <span class="act-text">New order #STK-9241 placed by Rajesh Kumar</span>
+                  <span class="act-time">2 minutes ago</span>
+                </div>
+              </div>
+              <div class="recent-act-item">
+                <span class="act-dot" style="background:#F97316"></span>
+                <div>
+                  <span class="act-text">Low stock alert: ASUS ROG Ally X — only 5 remaining</span>
+                  <span class="act-time">15 minutes ago</span>
+                </div>
+              </div>
+              <div class="recent-act-item">
+                <span class="act-dot" style="background:#0284C7"></span>
+                <div>
+                  <span class="act-text">Payment received ₹1,34,999 for order #STK-9239</span>
+                  <span class="act-time">1 hour ago</span>
+                </div>
+              </div>
+              <div class="recent-act-item">
+                <span class="act-dot" style="background:#EF4444"></span>
+                <div>
+                  <span class="act-text">Order #STK-9236 cancelled — refund initiated ₹74,990</span>
+                  <span class="act-time">3 hours ago</span>
+                </div>
+              </div>
+              <div class="recent-act-item">
+                <span class="act-dot" style="background:#FF1361"></span>
+                <div>
+                  <span class="act-text">New customer registered: Meera Joshi (meera.j@email.com)</span>
+                  <span class="act-time">5 hours ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-inventory" class="dashboard-tab-content" style="display:none; padding:2rem;">
+        <!-- Stock Alert Cards -->
+        <div class="alert-grid">
+          <div class="alert-card critical">
+            <div>
+              <span class="alert-num critical">3</span>
+              <span class="alert-label">Critical Stock</span>
+            </div>
+          </div>
+          <div class="alert-card low">
+            <div>
+              <span class="alert-num low">8</span>
+              <span class="alert-label">Low Stock</span>
+            </div>
+          </div>
+          <div class="alert-card healthy">
+            <div>
+              <span class="alert-num healthy">124</span>
+              <span class="alert-label">Healthy Stock</span>
+            </div>
+          </div>
+          <div class="alert-card overstocked">
+            <div>
+              <span class="alert-num overstocked">12</span>
+              <span class="alert-label">Overstocked</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inventory Table -->
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <span class="dashboard-card-title">Stock Levels</span>
+            <button class="btn btn-secondary btn-sm" onclick="location.href='404.html'">Export Inventory</button>
+          </div>
+          <div class="table-responsive">
+            <table class="dashboard-table" aria-label="Inventory Stock Table">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">SKU</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Reorder Level</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Last Restocked</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>MacBook Pro M3 Max</td>
+                  <td>STK-LAP-001</td>
+                  <td>
+                    <div class="stock-progress-cell">
+                      <span>8</span>
+                      <div class="stock-mini-bar"><div class="stock-mini-fill critical" style="width:8%"></div></div>
+                    </div>
+                  </td>
+                  <td>20</td>
+                  <td><span class="status-badge out-of-stock">● Critical</span></td>
+                  <td>12 Jun 2026</td>
+                  <td><button class="action-btn reorder" onclick="location.href='404.html'">Reorder</button></td>
+                </tr>
+                <tr>
+                  <td>ASUS ROG Ally X</td>
+                  <td>STK-GMG-031</td>
+                  <td>
+                    <div class="stock-progress-cell">
+                      <span>5</span>
+                      <div class="stock-mini-bar"><div class="stock-mini-fill critical" style="width:5%"></div></div>
+                    </div>
+                  </td>
+                  <td>15</td>
+                  <td><span class="status-badge out-of-stock">● Critical</span></td>
+                  <td>28 May 2026</td>
+                  <td><button class="action-btn reorder" onclick="location.href='404.html'">Reorder</button></td>
+                </tr>
+                <tr>
+                  <td>iPad Pro M4 12.9"</td>
+                  <td>STK-TAB-008</td>
+                  <td>
+                    <div class="stock-progress-cell">
+                      <span>0</span>
+                      <div class="stock-mini-bar"><div class="stock-mini-fill critical" style="width:0%"></div></div>
+                    </div>
+                  </td>
+                  <td>10</td>
+                  <td><span class="status-badge out-of-stock">● Out of Stock</span></td>
+                  <td>01 May 2026</td>
+                  <td><button class="action-btn reorder" onclick="location.href='404.html'">Reorder</button></td>
+                </tr>
+                <tr>
+                  <td>Canon EOS R6 Mark III</td>
+                  <td>STK-CAM-017</td>
+                  <td>
+                    <div class="stock-progress-cell">
+                      <span>14</span>
+                      <div class="stock-mini-bar"><div class="stock-mini-fill low" style="width:28%"></div></div>
+                    </div>
+                  </td>
+                  <td>20</td>
+                  <td><span class="status-badge low-stock">● Low Stock</span></td>
+                  <td>20 Jun 2026</td>
+                  <td><button class="action-btn reorder" onclick="location.href='404.html'">Reorder</button></td>
+                </tr>
+                <tr>
+                  <td>Samsung Galaxy S25 Ultra</td>
+                  <td>STK-PHN-012</td>
+                  <td>
+                    <div class="stock-progress-cell">
+                      <span>45</span>
+                      <div class="stock-mini-bar"><div class="stock-mini-fill good" style="width:60%"></div></div>
+                    </div>
+                  </td>
+                  <td>25</td>
+                  <td><span class="status-badge in-stock">● Healthy</span></td>
+                  <td>01 Jul 2026</td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td>Sony WH-1000XM5</td>
+                  <td>STK-AUD-045</td>
+                  <td>
+                    <div class="stock-progress-cell">
+                      <span>124</span>
+                      <div class="stock-mini-bar"><div class="stock-mini-fill good" style="width:82%"></div></div>
+                    </div>
+                  </td>
+                  <td>30</td>
+                  <td><span class="status-badge in-stock">● Healthy</span></td>
+                  <td>28 Jun 2026</td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td>Apple Watch Ultra 3</td>
+                  <td>STK-WTH-023</td>
+                  <td>
+                    <div class="stock-progress-cell">
+                      <span>32</span>
+                      <div class="stock-mini-bar"><div class="stock-mini-fill good" style="width:53%"></div></div>
+                    </div>
+                  </td>
+                  <td>15</td>
+                  <td><span class="status-badge in-stock">● Healthy</span></td>
+                  <td>25 Jun 2026</td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td>Anker 737 Power Bank</td>
+                  <td>STK-ACC-092</td>
+                  <td>
+                    <div class="stock-progress-cell">
+                      <span>210</span>
+                      <div class="stock-mini-bar"><div class="stock-mini-fill over" style="width:100%"></div></div>
+                    </div>
+                  </td>
+                  <td>50</td>
+                  <td><span class="status-badge shipped">● Overstocked</span></td>
+                  <td>30 Jun 2026</td>
+                  <td><button class="action-btn view" onclick="location.href='404.html'">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-settings" class="dashboard-tab-content" style="display:none; padding:2rem;">
+        <div class="settings-sections">
+          <!-- Store Information -->
+          <div class="settings-section">
+            <div class="settings-section-title">🏪 Store Information</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Store Name</label>
+                <input type="text" class="form-input" value="Stackly Electronics" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Contact Email</label>
+                <input type="email" class="form-input" value="admin@stackly.in" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-input" value="+91 80 4567 8901" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">GST Number</label>
+                <input type="text" class="form-input" value="29ABCDE1234F1Z5" />
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Store Address</label>
+                <textarea class="form-textarea">42, Indiranagar, 100 Feet Road, Bengaluru, Karnataka 560038, India</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Gateway -->
+          <div class="settings-section">
+            <div class="settings-section-title">💳 Payment Gateway</div>
+            <div class="toggle-row">
+              <div class="toggle-label-wrap">
+                <span class="toggle-title">UPI Payments</span>
+                <span class="toggle-desc">Accept Google Pay, PhonePe, Paytm UPI</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-label-wrap">
+                <span class="toggle-title">Credit / Debit Cards</span>
+                <span class="toggle-desc">Visa, Mastercard, RuPay via Razorpay</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-label-wrap">
+                <span class="toggle-title">Net Banking</span>
+                <span class="toggle-desc">All major Indian banks supported</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-label-wrap">
+                <span class="toggle-title">Cash on Delivery</span>
+                <span class="toggle-desc">COD with ₹50 additional charge</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Shipping -->
+          <div class="settings-section">
+            <div class="settings-section-title">🚚 Shipping Configuration</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Free Shipping Threshold (₹)</label>
+                <input type="number" class="form-input" value="999" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Default Shipping Cost (₹)</label>
+                <input type="number" class="form-input" value="49" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Express Shipping Cost (₹)</label>
+                <input type="number" class="form-input" value="149" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Estimated Delivery (days)</label>
+                <input type="number" class="form-input" value="5" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Tax Settings -->
+          <div class="settings-section">
+            <div class="settings-section-title">🧾 Tax Configuration</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">GST Rate (%)</label>
+                <input type="number" class="form-input" value="18" />
+              </div>
+              <div class="form-group" style="align-self:end">
+                <div class="toggle-row" style="padding:0;border:none">
+                  <div class="toggle-label-wrap">
+                    <span class="toggle-title">Tax Inclusive Pricing</span>
+                    <span class="toggle-desc">Show prices with GST included</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Settings -->
+          <div class="settings-section">
+            <div class="settings-section-title">⚙️ System Preferences</div>
+            <div class="toggle-row">
+              <div class="toggle-label-wrap">
+                <span class="toggle-title">Maintenance Mode</span>
+                <span class="toggle-desc">Take the store offline for updates</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-label-wrap">
+                <span class="toggle-title">Customer Reviews</span>
+                <span class="toggle-desc">Allow verified buyers to leave reviews</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-label-wrap">
+                <span class="toggle-title">Email Notifications</span>
+                <span class="toggle-desc">Send order confirmations and shipping updates</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div style="display:flex;justify-content:flex-end;gap:var(--space-4)">
+            <button class="btn btn-outline" onclick="location.href='404.html'">Reset Changes</button>
+            <button class="btn btn-primary" onclick="location.href='404.html'">Save All Settings</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/core.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    // Sidebar toggle for mobile
+    const toggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('dashboardSidebar');
+    const closeBtn = document.getElementById('sidebarCloseBtn');
+
+    if (toggle && sidebar) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sidebar.classList.toggle('mobile-open');
+        const overlay = document.querySelector('.dash-mobile-overlay') || createOverlay();
+        overlay.classList.toggle('open');
+      });
+    }
+
+    if (closeBtn && sidebar) {
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('mobile-open');
+        const overlay = document.querySelector('.dash-mobile-overlay');
+        if (overlay) overlay.classList.remove('open');
+      });
+    }
+
+    function createOverlay() {
+      const o = document.createElement('div');
+      o.className = 'dash-mobile-overlay';
+      document.body.appendChild(o);
+      o.addEventListener('click', () => {
+        sidebar.classList.remove('mobile-open');
+        o.classList.remove('open');
+      });
+      return o;
+    }
+
+    // Tab Switching Logic
+    const menuItems = document.querySelectorAll('#adminSidebarMenu .sidebar-menu-item');
+    const tabs = document.querySelectorAll('.dashboard-tab-content');
+    const dashboardTitle = document.querySelector('.dashboard-title-wrap h1');
+    const dashboardDesc = document.querySelector('.dashboard-title-wrap p');
+
+    menuItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active class from all
+        menuItems.forEach(i => i.classList.remove('active'));
+        tabs.forEach(t => t.style.display = 'none');
+        
+        // Add active to clicked
+        item.classList.add('active');
+        const targetId = item.getAttribute('data-tab');
+        const targetTab = document.getElementById(targetId);
+        if(targetTab) targetTab.style.display = 'block';
+
+        // Update Header Text
+        const titleText = item.querySelector('span:last-child').textContent;
+        if(dashboardTitle) dashboardTitle.textContent = 'Admin ' + titleText;
+        if(dashboardDesc) dashboardDesc.textContent = 'Managing your ' + titleText.toLowerCase() + ' efficiently.';
+        
+        // Close sidebar on mobile
+        const main = document.querySelector('.dashboard-main');
+        if (main) main.scrollTop = 0;
+
+        if(window.innerWidth <= 1024) {
+          sidebar.classList.remove('mobile-open');
+          const overlay = document.querySelector('.dash-mobile-overlay');
+          if(overlay) overlay.classList.remove('open');
+        }
+      });
+    });
+
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    const resetScroll = () => {
+      window.scrollTo(0, 0);
+      const main = document.querySelector('.dashboard-main');
+      if (main) main.scrollTop = 0;
+    };
+    resetScroll();
+    window.addEventListener('load', resetScroll);
+  </script>
+</body>
+</html>

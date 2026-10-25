@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stackly Multiverse Services — 15-min cold-chain grocery express, tech warranty shield, doorstep try-at-home fashion, and white-glove installation." />
+  <title>Services & Care — Stackly Multiverse Hypermarket</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/services.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator (Reference) -->
+  <div class="scroll-progress-container" id="scroll-progress-container">
+    <div class="scroll-progress-bar"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ NAVBAR HEADER (REFERENCE) ══ -->
+  <header>
+    <div class="container navbar">
+      <!-- Exact Logo from Reference -->
+      <a href="index.html" class="logo" id="nav-brand-logo" aria-label="Stackly Home">
+        <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo">
+      </a>
+
+      <!-- Nav Links from Reference -->
+      <ul class="nav-links" id="navbar-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link active">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="mobile-menu-actions">
+          <a href="login.html" class="btn btn-outline btn-sm btn-shimmer">Login</a>
+          <a href="create-account.html" class="btn btn-secondary btn-sm btn-shimmer">Get Started</a>
+        </li>
+      </ul>
+
+      <!-- Nav Actions from Reference -->
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm btn-shimmer" id="nav-login">Login</a>
+        <a href="create-account.html" class="btn btn-secondary btn-sm btn-shimmer" id="nav-get-started">Get Started</a>
+      </div>
+      <!-- Hamburger Menu Toggle -->
+      <button class="hamburger" id="navbar-hamburger" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ TOP SALE LINE / LIVE DEALS TICKER ══ -->
+    <div class="live-deals-bar" aria-label="Live deals ticker">
+      <div class="live-deals-track">
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">⚡ MULTIVERSE FLASH SALE:</span> Up to 60% OFF across Electronics, Groceries & Fashion with code <span class="accent-orange">STACK60</span></div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-green">🍏 15-MIN HYPER EXPRESS:</span> Fresh organic farm produce & daily pantry essentials</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">📱 TECH DROP:</span> Apple M3 Laptops · Galaxy S25 Ultra · Sony WH-1000XM5 in stock</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-orange">👗 FASHION SEASON:</span> 40% OFF North Peak Storm Jackets & Performance Footwear</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> 📦 Free Express White-Glove Courier on orders above ₹999 | 🛡️ 100% Genuine Brand Warranty</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">⚡ MULTIVERSE FLASH SALE:</span> Up to 60% OFF across Electronics, Groceries & Fashion with code <span class="accent-orange">STACK60</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services Hero -->
+  <section class="services-hero" aria-label="Services Hero">
+    <div class="container">
+      <div class="services-hero-content">
+        <div class="section-label reveal">Support Systems</div>
+        <h1 class="services-hero-title reveal delay-1">Omnichannel <span class="text-gradient">Hypermarket Services</span></h1>
+        <p class="services-hero-desc reveal delay-2">From 15-minute cold-chain grocery fulfillment and 2-year electronics warranty to try-at-home fashion fitting and white-glove home installation.</p>
+        <div class="reveal delay-3">
+          <button class="btn btn-primary btn-lg magnetic" onclick="location.href='404.html'">Explore Care Plans</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services Grid Section -->
+  <section class="section core-services" aria-label="Core Services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">What We Offer <span class="highlight">for You</span></h2>
+        <p class="section-subtitle">A comprehensive suite of premium services designed to elevate your electronics experience</p>
+      </div>
+
+      <div class="services-list-grid" data-stagger="0.1">
+        <!-- Service 1 -->
+        <div class="service-card-premium reveal tilt-card">
+          <div class="service-card-premium-icon" style="background:linear-gradient(135deg,#10B981,#06B6D4)">🍏</div>
+          <h3>15-Min Hyper Express Delivery</h3>
+          <p>Cold-chain insulated transport guarantees crisp organic produce, fresh dairy, and frozen essentials arrive fresh within 15 minutes.</p>
+          <a href="404.html" class="service-card-premium-link">Explore delivery policy →</a>
+        </div>
+        <!-- Service 2 -->
+        <div class="service-card-premium reveal tilt-card">
+          <div class="service-card-premium-icon" style="background:linear-gradient(135deg,#0284C7,#FF1361)">🛡️</div>
+          <h3>Stackly Tech Shield & Warranty</h3>
+          <p>Official manufacturer warranty + Stackly Shield covering accidental drops, screen cracks, liquid spills, and motherboard protection.</p>
+          <a href="404.html" class="service-card-premium-link">View protection plans →</a>
+        </div>
+        <!-- Service 3 -->
+        <div class="service-card-premium reveal tilt-card">
+          <div class="service-card-premium-icon" style="background:linear-gradient(135deg,#FF1361,#FB7185)">👗</div>
+          <h3>Doorstep Try-At-Home Fashion</h3>
+          <p>Order multiple garment sizes or shoes with zero pre-commitment. Try on at home while our courier waits, and return unwanted fits instantly.</p>
+          <a href="404.html" class="service-card-premium-link">How it works →</a>
+        </div>
+        <!-- Service 4 -->
+        <div class="service-card-premium reveal tilt-card">
+          <div class="service-card-premium-icon" style="background:linear-gradient(135deg,#F59E0B,#FF1361)">🛠️</div>
+          <h3>White-Glove Home Assembly</h3>
+          <p>Certified engineers install smart home appliances, air purifiers, dual-zone air fryers, and custom developer workstations at your convenience.</p>
+          <a href="404.html" class="service-card-premium-link">Book technician →</a>
+        </div>
+        <!-- Service 5 -->
+        <div class="service-card-premium reveal tilt-card">
+          <div class="service-card-premium-icon" style="background:linear-gradient(135deg,#0088CC,#38BDF8)">🔄</div>
+          <h3>Instant Trade-In & Buyback</h3>
+          <p>Exchange your old smartphones, tablets, or laptops for instant Stackly credits worth up to ₹15,000 against new electronics or groceries.</p>
+          <a href="404.html" class="service-card-premium-link">Value your device →</a>
+        </div>
+        <!-- Service 6 -->
+        <div class="service-card-premium reveal tilt-card">
+          <div class="service-card-premium-icon" style="background:linear-gradient(135deg,#EC4899,#F43F5E)">🎧</div>
+          <h3>24/7 Personal Shopper Concierge</h3>
+          <p>Direct live chat with specialized department curators. Get personalized advice on nutritional staples, laptop specs, and capsule wardrobes.</p>
+          <a href="404.html" class="service-card-premium-link">Connect to concierge →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Flow Section -->
+  <section class="section process-section" aria-label="Process Flow">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Workflow</div>
+        <h2 class="section-title">How Our <span class="highlight">Service Works</span></h2>
+        <p class="section-subtitle">We keep the entire shopping and post-purchase experience smooth and simple</p>
+      </div>
+
+      <div class="process-grid" data-stagger="0.1">
+        <div class="process-step reveal">
+          <div class="process-step-num">01</div>
+          <h4>Browse & Select</h4>
+          <p>Browse our catalog of premium, genuine electronics and customize options.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">02</div>
+          <h4>Flexible Checkout</h4>
+          <p>Choose your convenient payment mode, EMI plans, or protection cover.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">03</div>
+          <h4>Rapid Delivery</h4>
+          <p>Our automated logistics network dispatches orders from the closest hub.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">04</div>
+          <h4>Expert Assembly</h4>
+          <p>Certified engineers install your device and configure custom settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing/Plans Section -->
+  <section class="section pricing-section" aria-label="Pricing Plans">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Stackly Protect <span class="highlight">Plans</span></h2>
+        <p class="section-subtitle">Affordable coverage options to safeguard your brand new premium investments</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Plan 1 -->
+        <div class="pricing-card reveal reveal-left">
+          <div class="plan-name">Basic Plan</div>
+          <div class="plan-price">₹499 <span>/ year</span></div>
+          <div class="plan-features">
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Extended Brand Warranty (+6 Months)
+            </div>
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Free Pickup & Drop
+            </div>
+            <div class="plan-feature-item disabled">
+              <span class="plan-feature-icon">✕</span> Accidental Screen Protection
+            </div>
+            <div class="plan-feature-item disabled">
+              <span class="plan-feature-icon">✕</span> Liquid Damage Coverage
+            </div>
+            <div class="plan-feature-item disabled">
+              <span class="plan-feature-icon">✕</span> 24/7 Priority Helpline
+            </div>
+          </div>
+          <button class="btn btn-outline w-full" onclick="location.href='404.html'">Choose Plan</button>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="pricing-card premium-plan reveal reveal-scale">
+          <div class="plan-badge">POPULAR</div>
+          <div class="plan-name">Pro Protect</div>
+          <div class="plan-price">₹1,299 <span>/ year</span></div>
+          <div class="plan-features">
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Extended Brand Warranty (+1 Year)
+            </div>
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Free Pickup & Drop
+            </div>
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Accidental Screen Protection
+            </div>
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Liquid Damage Coverage
+            </div>
+            <div class="plan-feature-item disabled">
+              <span class="plan-feature-icon">✕</span> 24/7 Priority Helpline
+            </div>
+          </div>
+          <button class="btn btn-primary w-full" onclick="location.href='404.html'">Choose Plan</button>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="pricing-card reveal reveal-right">
+          <div class="plan-name">Ultimate Care</div>
+          <div class="plan-price">₹2,499 <span>/ year</span></div>
+          <div class="plan-features">
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Extended Brand Warranty (+2 Years)
+            </div>
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Free Pickup & Drop
+            </div>
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Accidental Screen Protection
+            </div>
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> Liquid Damage Coverage
+            </div>
+            <div class="plan-feature-item">
+              <span class="plan-feature-icon">✓</span> 24/7 Priority Helpline
+            </div>
+          </div>
+          <button class="btn btn-outline w-full" onclick="location.href='404.html'">Choose Plan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service CTA Section -->
+  <section class="service-cta reveal" aria-label="CTA">
+    <div class="container">
+      <h2>Need Help Selecting the Right Protect Plan?</h2>
+      <p>Our team of customer support representatives are available around the clock to guide you through coverages.</p>
+      <button class="btn btn-secondary btn-lg magnetic" onclick="location.href='404.html'">Talk to an Expert</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a href="index.html" class="logo" id="footer-brand-logo" aria-label="Stackly Home">
+              <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo" style="height:44px">
+            </a>
+            <p class="footer__desc">India's most trusted premium electronics store. We bring you the best in tech with genuine products, amazing prices, and world-class service.</p>
+            <div class="footer-socials" aria-label="Social media links">
+              <a href="404.html" class="social-btn" aria-label="Facebook">f</a>
+              <a href="404.html" class="social-btn" aria-label="Twitter/X">𝕏</a>
+              <a href="404.html" class="social-btn" aria-label="Instagram">📸</a>
+              <a href="404.html" class="social-btn" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Quick Links</h3>
+            <nav class="footer__links">
+              <a href="index.html" class="footer__link">Home</a>
+              <a href="about.html" class="footer__link">About Us</a>
+              <a href="services.html" class="footer__link">Services</a>
+              <a href="blog.html" class="footer__link">Blog</a>
+              <a href="contact.html" class="footer__link">Contact</a>
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Categories</h3>
+            <nav class="footer__links">
+              <a href="404.html" class="footer__link">Laptops & Computers</a>
+              <a href="404.html" class="footer__link">Smartphones</a>
+              <a href="404.html" class="footer__link">Audio & Headphones</a>
+              <a href="404.html" class="footer__link">Wearables</a>
+              <a href="404.html" class="footer__link">Gaming</a>
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Contact Us</h3>
+            <div class="footer__links">
+              <a href="404.html" class="footer__link">📍 42, Tech Hub, Koramangala, Bangalore</a>
+              <a href="404.html" class="footer__link">📞 +91 800 123 4567</a>
+              <a href="404.html" class="footer__link">✉️ support@stackly.in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Stackly Electronics Pvt. Ltd. All rights reserved.</p>
+        <nav class="footer__bottom-links">
+          <a href="404.html" class="footer__bottom-link">Privacy Policy</a>
+          <a href="404.html" class="footer__bottom-link">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" id="back-to-top">↑</button>
+
+  <script src="js/core.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/store-engine.js"></script>
+</body>
+</html>

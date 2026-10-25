@@ -1,0 +1,175 @@
+/* =====================================================
+   STACKLY MULTIVERSE — CSS VARIABLES (DESIGN TOKENS)
+   THEME: JET BLACK · CERULEAN BLUE · NEON ROSE
+   ===================================================== */
+
+:root {
+  /* ── JET BLACK SURFACES ── */
+  --navy-950: #050507; /* Pure Jet Black - Base Body Background */
+  --navy-900: #0A0B0E; /* Jet Black - Section Background & Nav */
+  --navy-800: #0E1015; /* Jet Black - Card Background & Overlays */
+  --navy-700: #14161C; /* Jet Black - Elevated Surfaces & Inputs */
+  --navy-600: #1C1F26; /* Jet Black - Subtle Borders & Dividers */
+  --navy-500: #252932;
+  --navy-400: #323742;
+
+  --jet-black: #050507;
+  --jet-surface: #0A0B0E;
+  --jet-card: #0E1015;
+  --jet-elevated: #14161C;
+  --jet-border: rgba(255, 255, 255, 0.08);
+
+  /* ── CERULEAN BLUE ACCENTS ── */
+  --blue-700: #005580;
+  --blue-600: #006699;
+  --blue-500: #0088CC; /* Vibrant Cerulean Blue */
+  --blue-400: #0284C7; /* Electric Cerulean */
+  --blue-300: #0EA5E9; /* Vivid Sky Cerulean */
+  --blue-200: #38BDF8; /* Luminous Cerulean */
+  --blue-100: #BAE6FD;
+  --cerulean: #0088CC;
+  --cerulean-electric: #0284C7;
+  --cerulean-glow: #38BDF8;
+
+  /* ── NEON ROSE ACCENTS ── */
+  --rose-700: #9F1239;
+  --rose-600: #BE123C;
+  --rose-500: #E11D48;
+  --rose-400: #FF1361; /* Pure Electric Neon Rose */
+  --rose-300: #F43F5E;
+  --rose-200: #FB7185;
+  --rose-100: #FDA4AF;
+  --neon-rose: #FF1361;
+  --neon-rose-vivid: #F43F5E;
+  --neon-rose-light: #FB7185;
+
+  /* Legacy purple tokens mapped to Neon Rose & Rose-Violet */
+  --purple-700: #BE123C;
+  --purple-600: #E11D48;
+  --purple-500: #FF1361; /* Electric Neon Rose */
+  --purple-400: #F43F5E;
+  --purple-300: #FB7185;
+
+  /* Cyan tokens mapped to luminous Cerulean */
+  --cyan-600: #0284C7;
+  --cyan-500: #0EA5E9;
+  --cyan-400: #38BDF8;
+  --cyan-300: #7DD3FC;
+  --cyan-200: #BAE6FD;
+
+  /* Orange tokens mapped to Neon Rose accents */
+  --orange-600: #BE123C;
+  --orange-500: #FF1361;
+  --orange-400: #F43F5E;
+  --orange-300: #FB7185;
+
+  --white: #FFFFFF;
+  --white-90: rgba(255,255,255,0.9);
+  --white-70: rgba(255,255,255,0.7);
+  --white-50: rgba(255,255,255,0.5);
+  --white-30: rgba(255,255,255,0.3);
+  --white-10: rgba(255,255,255,0.1);
+  --white-05: rgba(255,255,255,0.05);
+
+  /* ── SIGNATURE GRADIENTS ── */
+  --grad-primary: linear-gradient(135deg, #0284C7 0%, #FF1361 100%); /* Cerulean Blue to Neon Rose */
+  --grad-secondary: linear-gradient(135deg, #0088CC 0%, #38BDF8 100%); /* Pure Cerulean */
+  --grad-accent: linear-gradient(135deg, #FF1361 0%, #F43F5E 100%); /* Electric Neon Rose */
+  --grad-neon: linear-gradient(90deg, #0284C7, #38BDF8, #FF1361, #FB7185);
+  --grad-hero: radial-gradient(ellipse at 70% 30%, rgba(2, 132, 199, 0.22) 0%, transparent 65%),
+               radial-gradient(ellipse at 25% 75%, rgba(255, 19, 97, 0.18) 0%, transparent 65%),
+               radial-gradient(ellipse at 50% 10%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
+  --grad-card: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  --grad-glass: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+  --grad-text: linear-gradient(135deg, #38BDF8 0%, #0284C7 45%, #FF1361 100%);
+  --grad-orange-pink: linear-gradient(135deg, #FF1361 0%, #FB7185 100%);
+
+  /* ── GLASS EFFECTS ── */
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.1);
+  --glass-blur: blur(20px);
+  --glass-blur-sm: blur(10px);
+  --glass-blur-lg: blur(40px);
+
+  /* ── GLOW SHADOWS ── */
+  --shadow-glow-blue: 0 0 30px rgba(2, 132, 199, 0.35), 0 0 60px rgba(2, 132, 199, 0.15);
+  --shadow-glow-purple: 0 0 30px rgba(255, 19, 97, 0.35), 0 0 60px rgba(255, 19, 97, 0.15);
+  --shadow-glow-rose: 0 0 30px rgba(255, 19, 97, 0.4), 0 0 60px rgba(255, 19, 97, 0.2);
+  --shadow-glow-cyan: 0 0 30px rgba(56, 189, 248, 0.35), 0 0 60px rgba(56, 189, 248, 0.15);
+  --shadow-glow-orange: 0 0 30px rgba(255, 19, 97, 0.35);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.07);
+  --shadow-card-hover: 0 20px 60px rgba(0,0,0,0.85), 0 0 0 1px rgba(2, 132, 199, 0.4), 0 0 25px rgba(255, 19, 97, 0.2);
+  --shadow-nav: 0 4px 30px rgba(0,0,0,0.6);
+  --shadow-btn: 0 8px 25px rgba(2, 132, 199, 0.4);
+  --shadow-btn-hover: 0 15px 40px rgba(2, 132, 199, 0.6), 0 0 25px rgba(255, 19, 97, 0.3);
+
+  /* ── TYPOGRAPHY ── */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  --text-xs: clamp(0.65rem, 1.5vw, 0.75rem);
+  --text-sm: clamp(0.75rem, 2vw, 0.875rem);
+  --text-base: clamp(0.875rem, 2.5vw, 1rem);
+  --text-md: clamp(1rem, 2.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 3vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 3.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 4vw, 2rem);
+  --text-3xl: clamp(1.75rem, 5vw, 2.5rem);
+  --text-4xl: clamp(2rem, 6vw, 3.5rem);
+  --text-5xl: clamp(2.5rem, 8vw, 5rem);
+  --text-hero: clamp(2.5rem, 7vw, 5.5rem);
+
+  /* ── SPACING ── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── BORDERS ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+  --border-glass: 1px solid var(--glass-border);
+  --border-blue: 1px solid rgba(2, 132, 199, 0.35);
+  --border-purple: 1px solid rgba(255, 19, 97, 0.35);
+  --border-rose: 1px solid rgba(255, 19, 97, 0.35);
+
+  /* ── TRANSITIONS ── */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-smooth: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* ── Z-INDEX ── */
+  --z-base: 1;
+  --z-above: 10;
+  --z-modal: 100;
+  --z-nav: 1000;
+  --z-tooltip: 2000;
+  --z-overlay: 9999;
+
+  /* ── LAYOUT ── */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1440px;
+  --nav-height: 76px;
+
+  /* ── COMPONENTS ── */
+  --card-padding: clamp(1rem, 3vw, 1.75rem);
+  --section-padding: clamp(3rem, 8vw, 6rem);
+}

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Stackly Multiverse — 24/7 Omnichannel Customer Concierge for Groceries, Electronics, Fashion, and Home Living." />
+  <title>Customer Care & Concierge — Stackly Multiverse Hypermarket</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator (Reference) -->
+  <div class="scroll-progress-container" id="scroll-progress-container">
+    <div class="scroll-progress-bar"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ NAVBAR HEADER (REFERENCE) ══ -->
+  <header>
+    <div class="container navbar">
+      <!-- Exact Logo from Reference -->
+      <a href="index.html" class="logo" id="nav-brand-logo" aria-label="Stackly Home">
+        <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo">
+      </a>
+
+      <!-- Nav Links from Reference -->
+      <ul class="nav-links" id="navbar-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        <li class="mobile-menu-actions">
+          <a href="login.html" class="btn btn-outline btn-sm btn-shimmer">Login</a>
+          <a href="create-account.html" class="btn btn-secondary btn-sm btn-shimmer">Get Started</a>
+        </li>
+      </ul>
+
+      <!-- Nav Actions from Reference -->
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm btn-shimmer" id="nav-login">Login</a>
+        <a href="create-account.html" class="btn btn-secondary btn-sm btn-shimmer" id="nav-get-started">Get Started</a>
+      </div>
+      <!-- Hamburger Menu Toggle -->
+      <button class="hamburger" id="navbar-hamburger" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ TOP SALE LINE / LIVE DEALS TICKER ══ -->
+    <div class="live-deals-bar" aria-label="Live deals ticker">
+      <div class="live-deals-track">
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">⚡ MULTIVERSE FLASH SALE:</span> Up to 60% OFF across Electronics, Groceries & Fashion with code <span class="accent-orange">STACK60</span></div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-green">🍏 15-MIN HYPER EXPRESS:</span> Fresh organic farm produce & daily pantry essentials</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">📱 TECH DROP:</span> Apple M3 Laptops · Galaxy S25 Ultra · Sony WH-1000XM5 in stock</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-orange">👗 FASHION SEASON:</span> 40% OFF North Peak Storm Jackets & Performance Footwear</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> 📦 Free Express White-Glove Courier on orders above ₹999 | 🛡️ 100% Genuine Brand Warranty</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">⚡ MULTIVERSE FLASH SALE:</span> Up to 60% OFF across Electronics, Groceries & Fashion with code <span class="accent-orange">STACK60</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contact Hero -->
+  <section class="contact-hero" aria-label="Contact Hero">
+    <div class="container">
+      <div class="contact-hero-content">
+        <div class="section-label reveal">Get in Touch</div>
+        <h1 class="contact-hero-title reveal delay-1">Multiverse <span class="text-gradient">Customer Concierge</span></h1>
+        <p class="contact-hero-desc reveal delay-2">Round-the-clock priority care across Electronics, Organic Groceries, Fashion exchanges, and Home appliance installation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Grid (Form & Details) -->
+  <section class="section contact-grid-sec" aria-label="Contact Details">
+    <div class="container">
+      <div class="contact-main-grid">
+        <!-- Form -->
+        <div class="contact-form-card reveal">
+          <h3>Send Us a Message</h3>
+          <form class="contact-form" id="contact-form" onsubmit="return handleContactSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Full Name <span style="color:var(--rose-400)">*</span></label>
+              <input 
+                type="text" 
+                id="contact-name" 
+                name="name" 
+                class="form-input" 
+                placeholder="YourName (no spaces)" 
+                pattern="[A-Za-z]{1,16}" 
+                maxlength="16" 
+                required 
+                title="Name must contain only alphabets (no spaces, max 16 characters)"
+                onkeydown="if(event.key === ' ' || event.keyCode === 32){ event.preventDefault(); return false; }"
+                oninput="this.setCustomValidity(''); this.value = this.value.replace(/[^A-Za-z]/g, '').slice(0, 16);"
+              />
+              <span class="field-hint" style="font-size:0.75rem;color:var(--white-40);margin-top:0.25rem;display:block">Alphabets only, no spaces, max 16 letters</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address <span style="color:var(--rose-400)">*</span></label>
+              <input 
+                type="email" 
+                id="contact-email" 
+                name="email" 
+                class="form-input" 
+                placeholder="you@example.com" 
+                pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+                required 
+                title="Please enter a valid email address (e.g. you@example.com)"
+                oninput="this.setCustomValidity('');"
+              />
+              <span class="field-hint" style="font-size:0.75rem;color:var(--white-40);margin-top:0.25rem;display:block">Must be a valid email format</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Subject <span style="color:var(--rose-400)">*</span></label>
+              <input 
+                type="text" 
+                id="contact-subject" 
+                name="subject" 
+                class="form-input" 
+                placeholder="Query Subject" 
+                pattern="[A-Za-z ]{1,25}" 
+                maxlength="25" 
+                required 
+                title="Subject must contain only alphabets (max 25 characters)"
+                oninput="this.setCustomValidity(''); this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/\s+/g, ' ').slice(0, 25);"
+              />
+              <span class="field-hint" style="font-size:0.75rem;color:var(--white-40);margin-top:0.25rem;display:block">Alphabets only, max 25 letters</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message <span style="color:var(--rose-400)">*</span></label>
+              <textarea 
+                id="contact-message" 
+                name="message" 
+                class="form-input" 
+                rows="5" 
+                placeholder="How can we help you?" 
+                required 
+                style="resize:none"
+                title="Please enter your message"
+                oninput="this.setCustomValidity('');"
+              ></textarea>
+              <span class="field-hint" style="font-size:0.75rem;color:var(--white-40);margin-top:0.25rem;display:block">Message is mandatory</span>
+            </div>
+            <button type="submit" class="btn btn-primary w-full magnetic" style="width:100%" id="btn-send-message">Send Message 🚀</button>
+          </form>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="contact-info-wrap">
+          <div class="contact-info-card reveal reveal-right">
+            <div class="contact-info-icon">📍</div>
+            <div class="contact-info-body">
+              <h4>Headquarters</h4>
+              <p>42, Tech Hub, 4th Block, Koramangala,<br>Bangalore, Karnataka - 560034</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card reveal reveal-right delay-1">
+            <div class="contact-info-icon" style="background:var(--grad-secondary)">📞</div>
+            <div class="contact-info-body">
+              <h4>Call Center</h4>
+              <p>Sales: +91 800 123 4567<br>Support: +91 800 123 4568</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card reveal reveal-right delay-2">
+            <div class="contact-info-icon" style="background:var(--grad-accent)">✉️</div>
+            <div class="contact-info-body">
+              <h4>Email Support</h4>
+              <p>General Queries: info@stackly.in<br>Technical Care: support@stackly.in</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card reveal reveal-right delay-3" onclick="location.href='404.html'" style="cursor: pointer">
+            <div class="contact-info-icon" style="background:linear-gradient(135deg, #10B981, #06B6D4)">💬</div>
+            <div class="contact-info-body">
+              <h4>Social Channels</h4>
+              <p>Connect with us on Twitter / Instagram @StacklyElectronics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Map Placeholder Section -->
+  <section class="section map-section" aria-label="Location Map">
+    <div class="container">
+      <div class="map-placeholder-card reveal">
+        <div class="map-placeholder-bg" aria-hidden="true"></div>
+        <div class="map-placeholder-content">
+          <div class="map-placeholder-icon">📍</div>
+          <h2 class="map-placeholder-title">Interactive Map Placeholder</h2>
+          <p class="map-placeholder-address">42, Tech Hub, Koramangala, Bangalore, India</p>
+          <button class="btn btn-outline btn-lg magnetic" onclick="location.href='404.html'">Open in Google Maps 🗺️</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Working Hours & Socials Section -->
+  <section class="section working-hours-sec" aria-label="Working Hours">
+    <div class="container">
+      <div class="working-hours-grid">
+        <div class="story-content reveal">
+          <div class="section-label">Availability</div>
+          <h3>We are Available <span class="text-gradient">Every Day</span></h3>
+          <p>Our online catalog and automated chatbot support are active 24 hours a day, 365 days a year. Our team of live chat technicians and support dispatchers operate during regular business hours to guarantee the fastest fulfillment.</p>
+          <p>Feel free to visit our physical help centers during the operating periods listed. We look forward to guiding you through your next upgrade.</p>
+          <div style="display:flex;gap:1rem;margin-top:1.5rem" class="footer-socials">
+            <a href="404.html" class="social-btn" style="width:48px;height:48px;font-size:1.2rem" aria-label="Facebook">f</a>
+            <a href="404.html" class="social-btn" style="width:48px;height:48px;font-size:1.2rem" aria-label="Twitter/X">𝕏</a>
+            <a href="404.html" class="social-btn" style="width:48px;height:48px;font-size:1.2rem" aria-label="Instagram">📸</a>
+            <a href="404.html" class="social-btn" style="width:48px;height:48px;font-size:1.2rem" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div class="hours-table-card reveal reveal-right">
+          <div class="hours-row">
+            <span class="hours-day">Monday - Friday</span>
+            <span class="hours-time">09:00 AM - 08:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Saturday</span>
+            <span class="hours-time">10:00 AM - 06:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time">11:00 AM - 04:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Public Holidays</span>
+            <span class="hours-time closed">Closed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-sec" aria-label="FAQs">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">FAQs</div>
+        <h2 class="section-title">Common Support <span class="highlight">Queries</span></h2>
+        <p class="section-subtitle">Find instant solutions and guidelines regarding our electronics warranty policies</p>
+      </div>
+
+      <div style="max-width:800px;margin:0 auto">
+        <div class="accordion-item reveal">
+          <div class="accordion-header" role="button" tabindex="0">
+            <span>Can I visit the headquarters office for physical product purchases?</span>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">Our headquarters in Koramangala, Bangalore functions primarily as our administrative office and engineering hub. For hands-on experience, please visit one of our official Stackly partner showrooms located across major shopping centers.</div>
+          </div>
+        </div>
+        <div class="accordion-item reveal delay-1">
+          <div class="accordion-header" role="button" tabindex="0">
+            <span>How can I schedule an in-person tech inspection?</span>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">To schedule a physical hardware inspection or query resolution, submit a ticket inside your dashboard or reach out to our active chat assistants. We'll book a designated time slot for you with our engineers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a href="index.html" class="logo" id="footer-brand-logo" aria-label="Stackly Home">
+              <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo" style="height:44px">
+            </a>
+            <p class="footer__desc">India's most trusted premium electronics store. We bring you the best in tech with genuine products, amazing prices, and world-class service.</p>
+            <div class="footer-socials" aria-label="Social media links">
+              <a href="404.html" class="social-btn" aria-label="Facebook">f</a>
+              <a href="404.html" class="social-btn" aria-label="Twitter/X">𝕏</a>
+              <a href="404.html" class="social-btn" aria-label="Instagram">📸</a>
+              <a href="404.html" class="social-btn" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Quick Links</h3>
+            <nav class="footer__links">
+              <a href="index.html" class="footer__link">Home</a>
+              <a href="about.html" class="footer__link">About Us</a>
+              <a href="services.html" class="footer__link">Services</a>
+              <a href="blog.html" class="footer__link">Blog</a>
+              <a href="contact.html" class="footer__link">Contact</a>
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Categories</h3>
+            <nav class="footer__links">
+              <a href="404.html" class="footer__link">Laptops & Computers</a>
+              <a href="404.html" class="footer__link">Smartphones</a>
+              <a href="404.html" class="footer__link">Audio & Headphones</a>
+              <a href="404.html" class="footer__link">Wearables</a>
+              <a href="404.html" class="footer__link">Gaming</a>
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Contact Us</h3>
+            <div class="footer__links">
+              <a href="404.html" class="footer__link">📍 42, Tech Hub, Koramangala, Bangalore</a>
+              <a href="404.html" class="footer__link">📞 +91 800 123 4567</a>
+              <a href="404.html" class="footer__link">✉️ support@stackly.in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Stackly Electronics Pvt. Ltd. All rights reserved.</p>
+        <nav class="footer__bottom-links">
+          <a href="404.html" class="footer__bottom-link">Privacy Policy</a>
+          <a href="404.html" class="footer__bottom-link">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" id="back-to-top">↑</button>
+
+  <script src="js/core.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/store-engine.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('contact-name');
+      const emailInput = document.getElementById('contact-email');
+      const subjectInput = document.getElementById('contact-subject');
+      const messageInput = document.getElementById('contact-message');
+
+      const nameVal = nameInput.value;
+      const emailVal = emailInput.value.trim();
+      const subjectVal = subjectInput.value.trim();
+      const messageVal = messageInput.value.trim();
+
+      // 1. Validate Name: mandatory, alphabets only, no spaces, max 16 letters
+      if (!nameVal) {
+        nameInput.setCustomValidity('Please fill in your name.');
+        nameInput.reportValidity();
+        nameInput.focus();
+        return false;
+      }
+      if (!/^[A-Za-z]{1,16}$/.test(nameVal)) {
+        nameInput.setCustomValidity('Name must contain only alphabets with no spaces (maximum 16 letters).');
+        nameInput.reportValidity();
+        nameInput.focus();
+        return false;
+      }
+      nameInput.setCustomValidity('');
+
+      // 2. Validate Email: mandatory, valid email format
+      if (!emailVal) {
+        emailInput.setCustomValidity('Please fill in your email address.');
+        emailInput.reportValidity();
+        emailInput.focus();
+        return false;
+      }
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(emailVal)) {
+        emailInput.setCustomValidity('Please enter a valid email address (e.g. you@example.com).');
+        emailInput.reportValidity();
+        emailInput.focus();
+        return false;
+      }
+      emailInput.setCustomValidity('');
+
+      // 3. Validate Subject: mandatory, alphabets only, max 25 letters
+      if (!subjectVal) {
+        subjectInput.setCustomValidity('Please fill in the subject.');
+        subjectInput.reportValidity();
+        subjectInput.focus();
+        return false;
+      }
+      if (!/^[A-Za-z ]{1,25}$/.test(subjectVal)) {
+        subjectInput.setCustomValidity('Subject must contain only alphabets (maximum 20-25 letters).');
+        subjectInput.reportValidity();
+        subjectInput.focus();
+        return false;
+      }
+      subjectInput.setCustomValidity('');
+
+      // 4. Validate Message: mandatory
+      if (!messageVal) {
+        messageInput.setCustomValidity('Please enter your message.');
+        messageInput.reportValidity();
+        messageInput.focus();
+        return false;
+      }
+      messageInput.setCustomValidity('');
+
+      // When all details are valid, render to 404 page
+      window.location.href = '404.html';
+      return false;
+    }
+
+    // FAQ Accordion interaction
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('open');
+        const icon = header.querySelector('.accordion-icon');
+        if (icon) {
+          icon.textContent = item.classList.contains('open') ? '−' : '+';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

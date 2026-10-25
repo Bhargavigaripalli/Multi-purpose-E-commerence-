@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stackly Multiverse Journal — In-depth guides on Next-Gen Electronics, Farm-Fresh Nutrition, Minimalist Fashion, and Smart Home Living." />
+  <title>The Multiverse Journal — Stackly Lifestyle & Tech Insights</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/blog.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator (Reference) -->
+  <div class="scroll-progress-container" id="scroll-progress-container">
+    <div class="scroll-progress-bar"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ NAVBAR HEADER (REFERENCE) ══ -->
+  <header>
+    <div class="container navbar">
+      <!-- Exact Logo from Reference -->
+      <a href="index.html" class="logo" id="nav-brand-logo" aria-label="Stackly Home">
+        <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo">
+      </a>
+
+      <!-- Nav Links from Reference -->
+      <ul class="nav-links" id="navbar-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link active">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="mobile-menu-actions">
+          <a href="login.html" class="btn btn-outline btn-sm btn-shimmer">Login</a>
+          <a href="create-account.html" class="btn btn-secondary btn-sm btn-shimmer">Get Started</a>
+        </li>
+      </ul>
+
+      <!-- Nav Actions from Reference -->
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm btn-shimmer" id="nav-login">Login</a>
+        <a href="create-account.html" class="btn btn-secondary btn-sm btn-shimmer" id="nav-get-started">Get Started</a>
+      </div>
+      <!-- Hamburger Menu Toggle -->
+      <button class="hamburger" id="navbar-hamburger" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ TOP SALE LINE / LIVE DEALS TICKER ══ -->
+    <div class="live-deals-bar" aria-label="Live deals ticker">
+      <div class="live-deals-track">
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">⚡ MULTIVERSE FLASH SALE:</span> Up to 60% OFF across Electronics, Groceries & Fashion with code <span class="accent-orange">STACK60</span></div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-green">🍏 15-MIN HYPER EXPRESS:</span> Fresh organic farm produce & daily pantry essentials</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">📱 TECH DROP:</span> Apple M3 Laptops · Galaxy S25 Ultra · Sony WH-1000XM5 in stock</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-orange">👗 FASHION SEASON:</span> 40% OFF North Peak Storm Jackets & Performance Footwear</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> 📦 Free Express White-Glove Courier on orders above ₹999 | 🛡️ 100% Genuine Brand Warranty</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">⚡ MULTIVERSE FLASH SALE:</span> Up to 60% OFF across Electronics, Groceries & Fashion with code <span class="accent-orange">STACK60</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Blog Hero -->
+  <section class="blog-hero" aria-label="Blog Hero">
+    <div class="container">
+      <div class="blog-hero-content">
+        <div class="section-label reveal">Tech Insights</div>
+        <h1 class="blog-hero-title reveal delay-1">The Stackly <span class="text-gradient">Multiverse Journal</span></h1>
+        <p class="blog-hero-desc reveal delay-2">Expert perspectives spanning next-gen hardware, farm-fresh organic nutrition, capsule fashion, and smart home automation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter Bar -->
+  <div class="container">
+    <div class="category-filter-bar reveal">
+      <button class="filter-btn active" onclick="filterBlogArticles('all', this)">All Articles</button>
+      <button class="filter-btn" onclick="filterBlogArticles('tech', this)">💻 Tech & Gadgets</button>
+      <button class="filter-btn" onclick="filterBlogArticles('grocery', this)">🍏 Organic Nutrition</button>
+      <button class="filter-btn" onclick="filterBlogArticles('fashion', this)">👗 Fashion & Style</button>
+      <button class="filter-btn" onclick="filterBlogArticles('home', this)">🏠 Smart Living</button>
+    </div>
+  </div>
+
+  <!-- Featured Article Section -->
+  <section class="section featured-article-sec" aria-label="Featured Article">
+    <div class="container">
+      <div class="featured-article-card reveal" onclick="location.href='404.html'" style="cursor: pointer">
+        <div class="featured-img-wrap">
+          <img src="images/product-laptop.webp" alt="Featured Tech Article" />
+        </div>
+        <div class="featured-content">
+          <div class="featured-badge">⭐ FEATURED ARTICLE</div>
+          <h2 class="featured-title">The Complete Laptop Buyer's Guide: Finding Your Perfect Match</h2>
+          <p class="featured-excerpt">Whether you are a developer, gamer, designer, or casual student, finding the right workstation configuration can be complex. We break down CPUs, GPUs, RAM, and thermals in our ultimate guide.</p>
+          <div class="featured-meta">
+            <span>📅 July 2, 2025</span>
+            <span>⏱️ 10 min read</span>
+            <button class="btn btn-primary btn-sm magnetic" style="margin-left: auto" onclick="location.href='404.html'">Read Article</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Grid Section -->
+  <section class="section articles-sec" aria-label="Latest Articles">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Latest <span class="highlight">Articles & Guides</span></h2>
+        <p class="section-subtitle">Read carefully researched analyses and setup guides prepared by our expert engineering team</p>
+      </div>
+
+      <div class="blog-grid" id="blog-articles-grid" data-stagger="0.1">
+        <!-- Article 1: Tech -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="tech" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/product-laptop.webp" alt="Laptop Buyer Guide" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#60A5FA">💻 Tech &amp; Laptops</div>
+            <h3 class="blog-card__title">2026 Laptop Buying Guide: Apple M3 vs Intel Core Ultra</h3>
+            <p class="blog-card__excerpt">Benchmark breakdowns of battery efficiency, neural acceleration, and graphic rendering workflows.</p>
+            <div class="blog-card__meta">
+              <span>📅 July 2, 2026</span>
+              <span>⏱️ 8 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2: Grocery -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="grocery" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/blog-honey.webp" alt="Raw Honey &amp; Nutrition" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#10B981">🍏 Organic Nutrition</div>
+            <h3 class="blog-card__title">The Farm-to-Table Truth: Cold-Pressed Oils &amp; Raw Honey Nutrition</h3>
+            <p class="blog-card__excerpt">Exploring cellular health benefits, live enzymes, and unheated extra virgin nutrition straight from sustainable sanctuaries.</p>
+            <div class="blog-card__meta">
+              <span>📅 June 28, 2026</span>
+              <span>⏱️ 6 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3: Fashion -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="fashion" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/blog-streetwear.webp" alt="Capsule Wardrobe Streetwear" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#A78BFA">👗 Fashion &amp; Style</div>
+            <h3 class="blog-card__title">Minimalist Streetwear: Building a Capsule Wardrobe for 2026</h3>
+            <p class="blog-card__excerpt">How 8 durable, water-resistant garments can generate 30 distinct modern everyday looks without fast-fashion waste.</p>
+            <div class="blog-card__meta">
+              <span>📅 June 22, 2026</span>
+              <span>⏱️ 5 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 4: Home -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="home" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/blog-airfryer.webp" alt="Smart Kitchen Air Fryers" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#F59E0B">🏠 Smart Living</div>
+            <h3 class="blog-card__title">Smart Kitchen Revolution: Dual-Zone Air Fryers &amp; Healthier Dining</h3>
+            <p class="blog-card__excerpt">Cut kitchen energy usage by 45% while achieving restaurant-grade crispness with 90% less oil consumption.</p>
+            <div class="blog-card__meta">
+              <span>📅 June 18, 2026</span>
+              <span>⏱️ 7 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 7: Smart Home Standards (Smart Living) -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="home" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/hero-showcase.webp" alt="Matter and Thread Smart Home Automation" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#F59E0B">🏠 Smart Living</div>
+            <h3 class="blog-card__title">Smart Home Standards: Matter &amp; Thread Ecosystem Setup</h3>
+            <p class="blog-card__excerpt">Unify Apple HomeKit, Google Home, and Alexa with zero cloud lag, local mesh networks, and instant pairing.</p>
+            <div class="blog-card__meta">
+              <span>📅 June 15, 2026</span>
+              <span>⏱️ 9 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 8: Smart Home Air Quality & Climate (Smart Living) -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="home" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/product-smartwatch.webp" alt="Smart Climate and Air Quality Sensors" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#F59E0B">🏠 Smart Living</div>
+            <h3 class="blog-card__title">Next-Gen Climate Control: Laser AQI Sensors &amp; Smart Purifiers</h3>
+            <p class="blog-card__excerpt">Maintain 99.97% indoor air purity with automated HEPA air filtration and intelligent ambient humidity balancing.</p>
+            <div class="blog-card__meta">
+              <span>📅 June 10, 2026</span>
+              <span>⏱️ 6 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 5: Tech Audio -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="tech" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/product-headphones.webp" alt="ANC Headphones Battle" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#60A5FA">🎧 Hi-Res Audio</div>
+            <h3 class="blog-card__title">ANC Headphone Battle: Sony WH-1000XM5 vs Bose QC Ultra</h3>
+            <p class="blog-card__excerpt">Which active noise cancelling flagship headphone reigns supreme in comfort, sound depth, and spatial acoustics?</p>
+            <div class="blog-card__meta">
+              <span>📅 June 12, 2026</span>
+              <span>⏱️ 8 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 6: Grocery Fresh Produce -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="grocery" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/blog-apples.webp" alt="Organic Fresh Apples Farm Sourcing" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#10B981">🍏 Farm Fresh Produce</div>
+            <h3 class="blog-card__title">15-Minute Cold Chain: How Stackly Guarantees Orchard Freshness</h3>
+            <p class="blog-card__excerpt">Inside our temperature-monitored dark stores that keep fruits and dairy at peak nutrient bioavailability.</p>
+            <div class="blog-card__meta">
+              <span>📅 June 06, 2026</span>
+              <span>⏱️ 5 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 9: Mobile Photography & Computational Optics -->
+        <article class="blog-card reveal tilt-card shimmer-card" data-cat="tech" onclick="location.href='404.html'">
+          <div class="blog-card__image">
+            <img src="images/product-smartphone.webp" alt="Flagship Smartphone Optics and Sensors" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#60A5FA">📱 Mobile Innovation</div>
+            <h3 class="blog-card__title">Pro Mobile Cinema: 1-Inch Sensors &amp; Computational Optics</h3>
+            <p class="blog-card__excerpt">Harnessing 14-bit RAW workflows, periscope zoom stabilization, and AI neural ISP engines for studio-grade capture.</p>
+            <div class="blog-card__meta">
+              <span>📅 June 02, 2026</span>
+              <span>⏱️ 7 min read</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a href="index.html" class="logo" id="footer-brand-logo" aria-label="Stackly Home">
+              <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo" style="height:44px">
+            </a>
+            <p class="footer__desc">India's most trusted premium electronics store. We bring you the best in tech with genuine products, amazing prices, and world-class service.</p>
+            <div class="footer-socials" aria-label="Social media links">
+              <a href="404.html" class="social-btn" aria-label="Facebook">f</a>
+              <a href="404.html" class="social-btn" aria-label="Twitter/X">𝕏</a>
+              <a href="404.html" class="social-btn" aria-label="Instagram">📸</a>
+              <a href="404.html" class="social-btn" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Quick Links</h3>
+            <nav class="footer__links">
+              <a href="index.html" class="footer__link">Home</a>
+              <a href="about.html" class="footer__link">About Us</a>
+              <a href="services.html" class="footer__link">Services</a>
+              <a href="blog.html" class="footer__link">Blog</a>
+              <a href="contact.html" class="footer__link">Contact</a>
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Categories</h3>
+            <nav class="footer__links">
+              <a href="404.html" class="footer__link">Laptops & Computers</a>
+              <a href="404.html" class="footer__link">Smartphones</a>
+              <a href="404.html" class="footer__link">Audio & Headphones</a>
+              <a href="404.html" class="footer__link">Wearables</a>
+              <a href="404.html" class="footer__link">Gaming</a>
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Contact Us</h3>
+            <div class="footer__links">
+              <a href="404.html" class="footer__link">📍 42, Tech Hub, Koramangala, Bangalore</a>
+              <a href="404.html" class="footer__link">📞 +91 800 123 4567</a>
+              <a href="404.html" class="footer__link">✉️ support@stackly.in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Stackly Electronics Pvt. Ltd. All rights reserved.</p>
+        <nav class="footer__bottom-links">
+          <a href="404.html" class="footer__bottom-link">Privacy Policy</a>
+          <a href="404.html" class="footer__bottom-link">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" id="back-to-top">↑</button>
+
+  <!-- Article Reader Modal -->
+  <div id="blog-article-modal" class="cyber-modal-wrap" style="z-index: 10006">
+    <div class="cyber-modal" style="max-width: 780px">
+      <button class="modal-close-corner" onclick="closeBlogArticle()">✕</button>
+      <div id="blog-modal-body" style="padding: 2.5rem"></div>
+    </div>
+  </div>
+
+  <script src="js/core.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/store-engine.js"></script>
+  <script>
+    const BLOG_POSTS = [
+      {
+        id: 0,
+        title: "2026 Laptop Buying Guide: Apple M3 vs Intel Core Ultra",
+        category: "Tech & Laptops",
+        date: "July 2, 2026",
+        readTime: "8 min read",
+        author: "Tech Engineering Team",
+        image: "images/product-laptop.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            Choosing the right workstation requires balancing processing headroom, graphic execution, battery endurance, and thermal engineering. Whether you are building heavy codebases, editing 4K HDR reels, or dominating AAA esports tournaments, here is our full breakdown.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">1. Apple Silicon vs Intel Core Ultra vs AMD Ryzen AI</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Apple M3 and M3 Pro chips continue to dominate efficiency per watt. If you need 16+ hours of untethered battery life with zero fan noise, the UltraBook Pro X1 is unbeatable. For 3D CAD modeling and native DirectX 12 gaming, Intel Core i7/i9 paired with RTX 40-series mobile GPUs remains the gold standard.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">2. Unified Memory & Thermal Throttling</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1.5rem">
+            We strongly advise against 8GB RAM in 2026. Modern developer workflows with Docker containers and browser tabs require at least 16GB of fast LPDDR5X memory.
+          </p>
+        `
+      },
+      {
+        id: 1,
+        title: "The Farm-to-Table Truth: Cold-Pressed Oils & Raw Honey Nutrition",
+        category: "Organic Nutrition",
+        date: "June 28, 2026",
+        readTime: "6 min read",
+        author: "Holistic Nutrition Team",
+        image: "images/blog-honey.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            Commercial processing strips essential polyphenols and enzymes through heat refining. Unheated cold extraction retains pure enzymatic vitality, raw antioxidants, and true cellular bioavailability.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">1. Extra Virgin Cold-Pressing</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Extracted below 27°C without chemicals, retaining intact omega-3, omega-6, and active vitamin E complexes.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">2. Wild Forest Raw Honey</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1.5rem">
+            Single-origin raw honey delivers natural pollen, propolis, and antibacterial hydrogen peroxide compounds intact directly to your immunity system.
+          </p>
+        `
+      },
+      {
+        id: 2,
+        title: "Minimalist Streetwear: Building a Capsule Wardrobe for 2026",
+        category: "Fashion & Style",
+        date: "June 22, 2026",
+        readTime: "5 min read",
+        author: "Style Director",
+        image: "images/blog-streetwear.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            How 8 durable, water-resistant garments can generate 30 distinct modern everyday looks without fast-fashion waste.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">1. Performance Fabrics Meet Modern Silhouettes</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Breathable technical softshells, ripstop nylon cargo pants, and heavyweight combed organic cotton tees form the foundation of effortless all-weather urban aesthetics.
+          </p>
+        `
+      },
+      {
+        id: 3,
+        title: "Smart Kitchen Revolution: Dual-Zone Air Fryers & Healthier Dining",
+        category: "Smart Living",
+        date: "June 18, 2026",
+        readTime: "7 min read",
+        author: "Culinary Tech Team",
+        image: "images/blog-airfryer.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            Cut kitchen energy usage by 45% while achieving restaurant-grade crispness with 90% less oil consumption through dual-vortex superheated air circulation.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">1. Dual-Zone Independent Temperature Sync</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Cook proteins at 200°C in basket A while gently roasting delicate garden greens at 160°C in basket B, synchronized to finish at the exact same second.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">2. App Connectivity & Smart Presets</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1.5rem">
+            Over 200 guided chef recipes push automatic cooking schedules straight from your phone over Wi-Fi for foolproof everyday gourmet meals.
+          </p>
+        `
+      },
+      {
+        id: 4,
+        title: "ANC Headphone Battle: Sony WH-1000XM5 vs Bose QC Ultra",
+        category: "Hi-Res Audio",
+        date: "June 12, 2026",
+        readTime: "8 min read",
+        author: "Acoustics Lab",
+        image: "images/product-headphones.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            Active Noise Cancellation has reached near sci-fi levels. In this laboratory acoustic test, we pit the reigning Sony flagship against Bose's newly engineered QuietComfort Ultra.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">Noise Cancellation & Mic Clarity</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Bose maintains an edge in blocking unpredictable high-frequency chatter in airports and cafes. Meanwhile, Sony excels in low-frequency engine rumbles and delivers richer sub-bass response through LDAC codecs.
+          </p>
+        `
+      },
+      {
+        id: 5,
+        title: "15-Minute Cold Chain: How Stackly Guarantees Orchard Freshness",
+        category: "Farm Fresh Produce",
+        date: "June 06, 2026",
+        readTime: "5 min read",
+        author: "Supply Chain Team",
+        image: "images/blog-apples.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            Inside our temperature-monitored dark stores that keep fruits and dairy at peak nutrient bioavailability from harvest to doorstep.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">Micro-Climates by Produce Category</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Berries, leafy herbs, and stone fruits require unique temperature and humidity ratios. Our multi-zone chilled vehicles preserve crisp cell walls and essential vitamins.
+          </p>
+        `
+      },
+      {
+        id: 6,
+        title: "Smart Home Standards: Matter & Thread Ecosystem Setup",
+        category: "Smart Living",
+        date: "June 15, 2026",
+        readTime: "9 min read",
+        author: "IoT Systems Lead",
+        image: "images/hero-showcase.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            The era of walled-garden smart homes is over. Learn how the Matter IP-based protocol allows Apple HomeKit, Google Home, and Alexa devices to interact effortlessly with zero cloud latency.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">1. Unified Mesh with Thread Radios</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Thread eliminates Wi-Fi router congestion by creating a self-healing low-power mesh network where every plugged-in device acts as a node extender.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">2. Multi-Admin Interoperability</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1.5rem">
+            With Multi-Admin support, your household can control lights, thermostats, and sensors interchangeably across iOS, Android, and smart displays simultaneously without bridges.
+          </p>
+        `
+      },
+      {
+        id: 7,
+        title: "Next-Gen Climate Control: Laser AQI Sensors & Smart Purifiers",
+        category: "Smart Living",
+        date: "June 10, 2026",
+        readTime: "6 min read",
+        author: "Environmental Tech Lead",
+        image: "images/product-smartwatch.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            Maintain 99.97% indoor air purity with automated HEPA air filtration and intelligent ambient humidity balancing.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">1. Laser Optical Particulate Sensing</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Next-gen laser sensors detect PM2.5 and PM0.1 particles within 100 milliseconds, automatically ramping fan turbines before pollutant density impacts respiration.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">2. Whisper-Quiet Brushless Motors</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1.5rem">
+            Operating at sub-21dB sound levels on night mode, intelligent purifiers guarantee allergen-free restful deep sleep cycles without acoustic disturbance.
+          </p>
+        `
+      },
+      {
+        id: 8,
+        title: "Pro Mobile Cinema: 1-Inch Sensors & Computational Optics",
+        category: "Mobile Innovation",
+        date: "June 02, 2026",
+        readTime: "7 min read",
+        author: "Mobile Imaging Lead",
+        image: "images/product-smartphone.webp",
+        content: `
+          <p style="font-size:1.05rem;line-height:1.7;color:var(--white-80);margin-bottom:1.25rem">
+            With 1-inch physical sensor sizes and dedicated 200MP sensor arrays, flagship smartphones have become true cinematic workstations in your pocket.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">1. 14-Bit Log Video & Color Grading</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1rem">
+            Shooting in native Log color profiles preserves over 13 stops of dynamic range, allowing colorists to recover extreme highlight details in post-production.
+          </p>
+          <h4 style="font-size:1.2rem;color:var(--white);margin:1.5rem 0 0.5rem">2. Periscope Telephoto & Sensor-Shift OIS</h4>
+          <p style="font-size:0.95rem;line-height:1.7;color:var(--white-70);margin-bottom:1.5rem">
+            Triple-axis sensor-shift optical stabilization balances handheld walking shots, delivering gimbal-like smoothness without external stabilization hardware.
+          </p>
+        `
+      }
+    ];
+
+    function filterBlogArticles(category, btn) {
+      document.querySelectorAll('.category-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const articles = document.querySelectorAll('#blog-articles-grid .blog-card');
+      articles.forEach(card => {
+        const cardCat = card.getAttribute('data-cat');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openBlogArticle(id) {
+      window.location.href = '404.html';
+    }
+
+    function closeBlogArticle() {
+      const modal = document.getElementById('blog-article-modal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  </script>
+</body>
+</html>

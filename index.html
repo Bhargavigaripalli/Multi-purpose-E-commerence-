@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stackly Multiverse — India's Premier Multi-Purpose E-Commerce Hypermarket. Shop 100,000+ verified products: Next-Gen Electronics, Farm-Fresh Groceries, Urban Fashion, Home & Kitchen Living, Beauty & Wellness, and Sports Gear." />
+  <meta name="keywords" content="multipurpose ecommerce, electronics, grocery, fashion, home appliances, beauty, sports, buy online, stackly multiverse" />
+  <meta name="author" content="Stackly Multiverse" />
+  <meta property="og:title" content="Stackly Multiverse — The Multi-Purpose Hypermarket" />
+  <meta property="og:description" content="Next-Gen Electronics, Organic Groceries, Designer Fashion, Smart Living. 15-Minute Delivery & 100% Genuine Warranty." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/hero-showcase.webp" />
+  <meta name="theme-color" content="#050507" />
+  <title>Stackly — Multiverse Multi-Purpose E-Commerce Hypermarket</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <style>
+    /* ── STACKLY MULTIVERSE REVOLUTIONARY STYLING ── */
+    :root {
+      --navy-950: #050507; /* Pure OLED Jet Black */
+      --navy-900: #0A0B0E; /* Jet Black Surface */
+      --navy-800: #0E1015; /* Jet Black Card Container */
+      --navy-700: #14161C; /* Jet Black Elevated */
+      --blue-electric: #0284C7; /* Electric Cerulean Blue */
+      --purple-vivid: #FF1361; /* Vivid Neon Rose */
+      --cerulean: #0284C7;
+      --neon-rose: #FF1361;
+      --cyan-neon: #38BDF8; /* Luminous Cerulean Sky */
+      --emerald-glow: #10B981;
+      --orange-fire: #FF1361;
+    }
+
+    body {
+      background-color: var(--navy-950);
+      color: #ffffff;
+      overflow-x: hidden;
+      font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+
+
+    /* Hero section */
+    .hero {
+      padding-top: calc(var(--nav-height) + 30px);
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .hero-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: #38BDF8;
+      box-shadow: 0 0 20px rgba(2, 132, 199, 0.2);
+    }
+
+    /* Department Pills in Hero */
+    .hero-dept-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .hero-dept-pill {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85);
+      padding: 0.45rem 0.95rem;
+      border-radius: 50px;
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+    }
+    .hero-dept-pill:hover {
+      background: rgba(2, 132, 199, 0.18);
+      border-color: rgba(2, 132, 199, 0.45);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Department Hub Tabs in Catalog */
+    .dept-tabs-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 2rem 0 3rem;
+    }
+    .dept-tab-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.75);
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .dept-tab-btn:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.25);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .dept-tab-btn.active {
+      background: linear-gradient(135deg, #0284C7, #FF1361);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.45);
+      transform: translateY(-2px);
+    }
+
+    /* Hero 4-card 3D Grid */
+    .multiverse-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      grid-template-rows: 240px 240px;
+      gap: 1.25rem;
+      height: 500px;
+    }
+    .m-hero-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(14, 16, 21, 0.85);
+      backdrop-filter: blur(16px);
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .m-hero-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: rgba(2, 132, 199, 0.45);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 25px rgba(2, 132, 199, 0.25);
+    }
+    .m-hero-card.span-row {
+      grid-row: span 2;
+    }
+    .m-hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.6s ease;
+    }
+    .m-hero-card:hover img {
+      transform: scale(1.08);
+    }
+    .m-hero-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 7, 0.95) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+    .m-hero-card-dept {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38BDF8;
+      margin-bottom: 0.25rem;
+    }
+    .m-hero-card-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 0.25rem;
+    }
+    .m-hero-card-price {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #FF1361;
+    }
+
+    /* Floating Badge Pill */
+    .hero-floating-pill {
+      position: absolute;
+      background: rgba(10, 11, 14, 0.92);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 0.6rem 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+      z-index: 5;
+      animation: heroFloatUp 6s ease-in-out infinite;
+    }
+
+    /* Category Cards */
+    .category-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+    }
+    .category-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(2, 132, 199, 0.4);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(2, 132, 199, 0.2);
+    }
+    .category-card .cat-icon-box {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .category-card:hover .cat-icon-box {
+      transform: scale(1.12) rotate(4deg);
+    }
+
+    /* Product Card Body Enhancements */
+    .product-card {
+      background: rgba(14, 16, 21, 0.85);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(2, 132, 199, 0.4);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 20px rgba(2, 132, 199, 0.2);
+    }
+    .product-card__image-wrap {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: #0A0B0E;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .product-card__image {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-card__image {
+      transform: scale(1.08);
+    }
+    .product-card__badge {
+      position: absolute;
+      top: 0.75rem; left: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #fff;
+      z-index: 2;
+    }
+    .product-card__fav {
+      position: absolute;
+      top: 0.75rem; right: 0.75rem;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(5, 5, 7, 0.8);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: #fff;
+      z-index: 2;
+      transition: all 0.2s ease;
+    }
+    .product-card__fav:hover {
+      transform: scale(1.15);
+      background: rgba(255, 19, 97, 0.2);
+      border-color: #FF1361;
+      color: #FF1361;
+    }
+    .product-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 5, 7, 0.6);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+    .product-card:hover .product-card__overlay {
+      opacity: 1;
+    }
+    .product-card__body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .product-card__category {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .product-card__name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.7rem;
+    }
+    .product-card__rating {
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.85rem;
+    }
+    .product-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .product-card__price {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #38BDF8;
+    }
+    .product-card__original-price {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: line-through;
+      margin-left: 0.35rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .multiverse-hero-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .m-hero-card.span-row {
+        grid-row: auto;
+        height: 260px;
+      }
+      .m-hero-card {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body class="has-deals-bar">
+
+  <!-- Scroll Progress Indicator (Reference) -->
+  <div class="scroll-progress-container" id="scroll-progress-container">
+    <div class="scroll-progress-bar"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ NAVBAR HEADER (REFERENCE) ══ -->
+  <header>
+    <div class="container navbar">
+      <!-- Exact Logo from Reference -->
+      <a href="index.html" class="logo" id="nav-brand-logo" aria-label="Stackly Home">
+        <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo">
+      </a>
+
+      <!-- Nav Links from Reference -->
+      <ul class="nav-links" id="navbar-links">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="mobile-menu-actions">
+          <a href="login.html" class="btn btn-outline btn-sm btn-shimmer">Login</a>
+          <a href="create-account.html" class="btn btn-secondary btn-sm btn-shimmer">Get Started</a>
+        </li>
+      </ul>
+
+      <!-- Nav Actions from Reference -->
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm btn-shimmer" id="nav-login">Login</a>
+        <a href="create-account.html" class="btn btn-secondary btn-sm btn-shimmer" id="nav-get-started">Get Started</a>
+      </div>
+      <!-- Hamburger Menu Toggle -->
+      <button class="hamburger" id="navbar-hamburger" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ TOP SALE LINE / LIVE DEALS TICKER ══ -->
+    <div class="live-deals-bar" aria-label="Live deals ticker">
+      <div class="live-deals-track">
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">⚡ MULTIVERSE FLASH SALE:</span> Up to 60% OFF across Electronics, Groceries & Fashion with code <span class="accent-orange">STACK60</span></div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-green">🍏 15-MIN HYPER EXPRESS:</span> Fresh organic farm produce & daily pantry essentials</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">📱 TECH DROP:</span> Apple M3 Laptops · Galaxy S25 Ultra · Sony WH-1000XM5 in stock</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-orange">👗 FASHION SEASON:</span> 40% OFF North Peak Storm Jackets & Performance Footwear</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> 📦 Free Express White-Glove Courier on orders above ₹999 | 🛡️ 100% Genuine Brand Warranty</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">⚡ MULTIVERSE FLASH SALE:</span> Up to 60% OFF across Electronics, Groceries & Fashion with code <span class="accent-orange">STACK60</span></div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent-green">🍏 15-MIN HYPER EXPRESS:</span> Fresh organic farm produce & daily pantry essentials</div>
+        <div class="live-deal-item"><span class="live-deal-dot"></span> <span class="accent">📱 TECH DROP:</span> Apple M3 Laptops · Galaxy S25 Ultra · Sony WH-1000XM5 in stock</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════ MULTIVERSE HERO ══ -->
+  <section class="hero" id="hero" aria-label="Hero section">
+
+    <!-- Ambient Glowing Orbs Background -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid-pattern"></div>
+      <div class="hero-animated-bg">
+        <div class="orb-1" style="background:radial-gradient(circle,rgba(2,132,199,0.18) 0%,transparent 70%)"></div>
+        <div class="orb-2" style="background:radial-gradient(circle,rgba(255,19,97,0.16) 0%,transparent 70%)"></div>
+        <div class="orb-3" style="background:radial-gradient(circle,rgba(16,185,129,0.10) 0%,transparent 70%)"></div>
+      </div>
+      <div class="hero-particles" id="heroParticles"></div>
+    </div>
+
+    <div class="container hero-grid" style="display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center;position:relative;z-index:2">
+      
+      <!-- Left: Content -->
+      <div class="hero-content" style="padding-right:1rem">
+        <div class="hero-badge-wrap reveal">
+          <span class="live-beacon"></span>
+          <span>⚡ India's Premier Multi-Purpose Hypermarket</span>
+        </div>
+
+        <h1 class="hero-headline reveal delay-1" id="hero-title" style="font-size:3.4rem;line-height:1.15;font-weight:900;margin-bottom:1rem">
+          <span>The Everything Store for </span><br/>
+          <span style="background:linear-gradient(135deg,#60A5FA,#A78BFA,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+            <span data-typing='["Next-Gen Electronics","Organic Farm Groceries","Designer Urban Fashion","Smart Living & Home","Active Sports Fitness"]'>Next-Gen Electronics</span>
+          </span>
+          <span class="typing-cursor" aria-hidden="true"></span>
+        </h1>
+
+        <p class="hero-desc reveal delay-2" style="font-size:1.05rem;line-height:1.65;color:rgba(255,255,255,0.7);max-width:540px">
+          Shop 100,000+ certified products across Electronics, Fresh Groceries, Streetwear Fashion, Kitchen Appliances, and Athletic Gear with hyper-fast 15-minute dispatch.
+        </p>
+
+        <!-- Department Quick Switcher Pills in Hero -->
+        <div class="hero-dept-pills reveal delay-2">
+          <a href="#featured" onclick="StacklyStore.filterByDepartment('all')" class="hero-dept-pill">⚡ All Departments</a>
+          <a href="#featured" onclick="StacklyStore.filterByDepartment('electronics')" class="hero-dept-pill">📱 Electronics</a>
+          <a href="#featured" onclick="StacklyStore.filterByDepartment('grocery')" class="hero-dept-pill">🍏 Fresh Grocery</a>
+          <a href="#featured" onclick="StacklyStore.filterByDepartment('fashion')" class="hero-dept-pill">👗 Fashion</a>
+          <a href="#featured" onclick="StacklyStore.filterByDepartment('home')" class="hero-dept-pill">🏠 Home</a>
+          <a href="#featured" onclick="StacklyStore.filterByDepartment('sports')" class="hero-dept-pill">🏃 Sports</a>
+        </div>
+
+        <div class="hero-cta reveal delay-3" style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="404.html" class="btn btn-primary btn-xl magnetic" id="hero-shop-now" aria-label="Explore Catalog">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4V2H5v2H3a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2V2h-2v2H7zm11 2v2h-2V6H8v2H6V6H4v12h16V6h-2z"/></svg>
+            Explore Catalog
+          </a>
+          <a href="404.html" class="btn btn-secondary btn-xl" id="hero-view-deals" aria-label="View Flash Deals">
+            ⚡ Flash Deals (60% Off)
+          </a>
+        </div>
+
+        <!-- Animated Stats Counter -->
+        <div class="hero-stats reveal delay-4" style="margin-top:2.5rem;display:flex;gap:2.5rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem">
+          <div class="hero-stat-item">
+            <div class="hero-stat-number" style="font-size:1.75rem;font-weight:900;color:#fff" data-counter data-target="100000" data-suffix="+" data-duration="2500">100K+</div>
+            <div class="hero-stat-label" style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em">Products</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-number" style="font-size:1.75rem;font-weight:900;color:#10B981" data-counter data-target="15" data-suffix=" Mins" data-duration="1500">15 Mins</div>
+            <div class="hero-stat-label" style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em">Hyper Delivery</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-number" style="font-size:1.75rem;font-weight:900;color:#60A5FA" data-counter data-target="2.5" data-suffix="M+" data-duration="2000" data-decimals="1">2.5M+</div>
+            <div class="hero-stat-label" style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em">Shoppers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Visual Multiverse 4-Card 3D Showcase -->
+      <div class="hero-visual reveal reveal-right" style="position:relative">
+        
+        <div class="multiverse-hero-grid" data-parallax="0.04">
+          
+          <!-- Card 1 (Span 2 rows): Laptop & Tech -->
+          <div class="m-hero-card span-row tilt-card shimmer-card" onclick="StacklyStore.openQuickView('p-laptop-1')">
+            <img src="images/product-laptop.webp" alt="UltraBook Pro X1 M3" loading="eager" />
+            <div class="m-hero-card-overlay">
+              <span class="m-hero-card-dept">💻 Electronics & Tech</span>
+              <h3 class="m-hero-card-title">UltraBook Pro X1 M3</h3>
+              <div class="m-hero-card-price">₹89,999 <span style="font-size:0.75rem;color:#ef4444;margin-left:0.4rem">-25% OFF</span></div>
+            </div>
+            <div style="position:absolute;top:1rem;left:1rem;background:#EF4444;color:#fff;font-size:0.7rem;font-weight:800;padding:0.25rem 0.6rem;border-radius:6px;z-index:2">🔥 HOT TECH</div>
+          </div>
+
+          <!-- Card 2: Fresh Grocery -->
+          <div class="m-hero-card tilt-card shimmer-card" onclick="StacklyStore.openQuickView('p-groc-1')">
+            <img src="images/product-apples.webp" alt="Fresh Washington Gala Apples" loading="eager" />
+            <div class="m-hero-card-overlay">
+              <span class="m-hero-card-dept" style="color:#10B981">🍏 Farm Fresh Grocery</span>
+              <h3 class="m-hero-card-title" style="font-size:0.95rem">Organic Gala Apples (1kg)</h3>
+              <div class="m-hero-card-price" style="color:#10B981">₹199</div>
+            </div>
+            <div style="position:absolute;top:0.75rem;left:0.75rem;background:#10B981;color:#fff;font-size:0.65rem;font-weight:800;padding:0.2rem 0.5rem;border-radius:6px;z-index:2">100% ORGANIC</div>
+          </div>
+
+          <!-- Card 3: Urban Fashion -->
+          <div class="m-hero-card tilt-card shimmer-card" onclick="StacklyStore.openQuickView('p-fash-1')">
+            <img src="images/product-jacket.webp" alt="AeroTech Storm Jacket" loading="eager" />
+            <div class="m-hero-card-overlay">
+              <span class="m-hero-card-dept" style="color:#FB7185">👗 Fashion & Lifestyle</span>
+              <h3 class="m-hero-card-title" style="font-size:0.95rem">AeroTech Storm Jacket</h3>
+              <div class="m-hero-card-price" style="color:#FF1361">₹3,499</div>
+            </div>
+            <div style="position:absolute;top:0.75rem;left:0.75rem;background:#FF1361;color:#fff;font-size:0.65rem;font-weight:800;padding:0.2rem 0.5rem;border-radius:6px;z-index:2">TRENDING</div>
+          </div>
+
+        </div>
+
+        <!-- Floating Info Badges -->
+        <div class="hero-floating-pill hero-float-1" style="top:-15px;right:20px">
+          <span style="font-size:1.3rem">⚡</span>
+          <div>
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.5)">Hyper-Speed Delivery</div>
+            <div style="font-size:0.85rem;font-weight:800;color:#fff">15-Min Doorstep</div>
+          </div>
+        </div>
+
+        <div class="hero-floating-pill hero-float-2" style="bottom:-15px;left:20px">
+          <span style="font-size:1.3rem">🛡️</span>
+          <div>
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.5)">Verified Authenticity</div>
+            <div style="font-size:0.85rem;font-weight:800;color:#10B981">100% Genuine Brands</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ SHOP BY 6 CORE DEPARTMENTS ══ -->
+  <section class="section categories-section" id="departments" aria-label="Shop by Department">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Omnichannel Marketplace</div>
+        <h2 class="section-title">Shop by <span class="highlight">Department</span></h2>
+        <p class="section-subtitle">Browse curated flagship departments with verified authenticity and rapid dispatch</p>
+      </div>
+
+      <div class="categories-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem">
+        
+        <a href="#featured" onclick="StacklyStore.filterByDepartment('electronics')" class="category-card reveal" aria-label="Electronics & Tech">
+          <div class="cat-icon-box" style="background:linear-gradient(135deg,#0284C7,#FF1361)">💻</div>
+          <div class="category-name" style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:0.25rem">Electronics</div>
+          <div class="category-count" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">12,400+ Products</div>
+        </a>
+
+        <a href="#featured" onclick="StacklyStore.filterByDepartment('grocery')" class="category-card reveal delay-1" aria-label="Fresh Grocery">
+          <div class="cat-icon-box" style="background:linear-gradient(135deg,#10B981,#0284C7)">🍏</div>
+          <div class="category-name" style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:0.25rem">Fresh Grocery</div>
+          <div class="category-count" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">18,900+ Products</div>
+        </a>
+
+        <a href="#featured" onclick="StacklyStore.filterByDepartment('fashion')" class="category-card reveal delay-2" aria-label="Fashion & Apparel">
+          <div class="cat-icon-box" style="background:linear-gradient(135deg,#FF1361,#FB7185)">👗</div>
+          <div class="category-name" style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:0.25rem">Fashion & Lifestyle</div>
+          <div class="category-count" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">24,500+ Products</div>
+        </a>
+
+        <a href="#featured" onclick="StacklyStore.filterByDepartment('home')" class="category-card reveal delay-3" aria-label="Home & Kitchen">
+          <div class="cat-icon-box" style="background:linear-gradient(135deg,#F59E0B,#FF1361)">🏠</div>
+          <div class="category-name" style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:0.25rem">Home & Kitchen</div>
+          <div class="category-count" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">14,200+ Products</div>
+        </a>
+
+        <a href="#featured" onclick="StacklyStore.filterByDepartment('beauty')" class="category-card reveal delay-4" aria-label="Beauty & Wellness">
+          <div class="cat-icon-box" style="background:linear-gradient(135deg,#E11D48,#FF1361)">💄</div>
+          <div class="category-name" style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:0.25rem">Beauty & Care</div>
+          <div class="category-count" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">9,800+ Products</div>
+        </a>
+
+        <a href="#featured" onclick="StacklyStore.filterByDepartment('sports')" class="category-card reveal delay-5" aria-label="Sports & Fitness">
+          <div class="cat-icon-box" style="background:linear-gradient(135deg,#0088CC,#38BDF8)">🏃</div>
+          <div class="category-name" style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:0.25rem">Sports & Fitness</div>
+          <div class="category-count" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">6,700+ Products</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ MULTIVERSE CATALOG WITH DEPARTMENT SWITCHER ══ -->
+  <section class="section featured-products" id="featured" aria-label="Featured Multiverse Catalog">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">All-In-One Hypermarket</div>
+        <h2 class="section-title">Featured <span class="highlight">Products Hub</span></h2>
+        <p class="section-subtitle">Filter by department dynamically or view top trending deals nationwide</p>
+      </div>
+
+      <!-- Animated Department Filter Tabs -->
+      <div class="dept-tabs-container reveal">
+        <button class="dept-tab-btn dept-pill active" onclick="StacklyStore.filterByDepartment('all', this)">⚡ All Departments</button>
+        <button class="dept-tab-btn dept-pill" onclick="StacklyStore.filterByDepartment('electronics', this)">💻 Electronics</button>
+        <button class="dept-tab-btn dept-pill" onclick="StacklyStore.filterByDepartment('grocery', this)">🍏 Fresh Grocery</button>
+        <button class="dept-tab-btn dept-pill" onclick="StacklyStore.filterByDepartment('fashion', this)">👗 Fashion</button>
+        <button class="dept-tab-btn dept-pill" onclick="StacklyStore.filterByDepartment('home', this)">🏠 Home & Living</button>
+        <button class="dept-tab-btn dept-pill" onclick="StacklyStore.filterByDepartment('beauty', this)">💄 Beauty</button>
+        <button class="dept-tab-btn dept-pill" onclick="StacklyStore.filterByDepartment('sports', this)">🏃 Sports</button>
+      </div>
+
+      <!-- Dynamic Product Grid -->
+      <div class="products-grid" id="featured-products-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem">
+        <!-- Rendered by store-engine.js or initial static load -->
+        
+        <!-- Product 1: Laptop -->
+        <div class="product-card tilt-card shimmer-card reveal">
+          <div class="product-card__image-wrap">
+            <span class="product-card__badge" style="background:#EF4444">🔥 HOT TECH</span>
+            <img src="images/product-laptop.webp" alt="UltraBook Pro X1 M3" class="product-card__image" loading="lazy" />
+            <button class="product-card__fav trigger-wishlist" onclick="event.stopPropagation(); StacklyStore.toggleWishlist('p-laptop-1')">❤️</button>
+            <div class="product-card__overlay">
+              <button class="btn btn-secondary btn-sm" onclick="StacklyStore.openQuickView('p-laptop-1')">Quick View</button>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__category" style="display:flex;justify-content:space-between">
+              <span>Laptops · Electronics</span>
+              <span style="color:#10b981;font-weight:700">★ 4.9</span>
+            </div>
+            <h3 class="product-card__name" onclick="StacklyStore.openQuickView('p-laptop-1')" style="cursor:pointer">UltraBook Pro X1 M3 Chip 16GB</h3>
+            <div class="product-card__rating">
+              <span style="color:#FBBF24">★★★★★</span>
+              <span style="color:rgba(255,255,255,0.5)">(2,140 reviews)</span>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__price">₹89,999</span>
+                <span class="product-card__original-price">₹1,19,999</span>
+              </div>
+              <button class="btn btn-primary btn-sm magnetic" onclick="window.location.href='404.html'">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: Gala Apples -->
+        <div class="product-card tilt-card shimmer-card reveal delay-1">
+          <div class="product-card__image-wrap">
+            <span class="product-card__badge" style="background:#10B981">🍏 100% ORGANIC</span>
+            <img src="images/product-apples.webp" alt="Fresh Washington Gala Apples" class="product-card__image" loading="lazy" />
+            <button class="product-card__fav trigger-wishlist" onclick="event.stopPropagation(); StacklyStore.toggleWishlist('p-groc-1')">❤️</button>
+            <div class="product-card__overlay">
+              <button class="btn btn-secondary btn-sm" onclick="StacklyStore.openQuickView('p-groc-1')">Quick View</button>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__category" style="display:flex;justify-content:space-between">
+              <span>Fresh Produce · Grocery</span>
+              <span style="color:#10b981;font-weight:700">★ 4.9</span>
+            </div>
+            <h3 class="product-card__name" onclick="StacklyStore.openQuickView('p-groc-1')" style="cursor:pointer">Washington Red Gala Crisp Apples (1 kg)</h3>
+            <div class="product-card__rating">
+              <span style="color:#FBBF24">★★★★★</span>
+              <span style="color:rgba(255,255,255,0.5)">(1,240 reviews)</span>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__price">₹199</span>
+                <span class="product-card__original-price">₹280</span>
+              </div>
+              <button class="btn btn-primary btn-sm magnetic" onclick="window.location.href='404.html'">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Smartphone -->
+        <div class="product-card tilt-card shimmer-card reveal delay-2">
+          <div class="product-card__image-wrap">
+            <span class="product-card__badge" style="background:#0284C7">✨ NEW FLAGSHIP</span>
+            <img src="images/product-smartphone.webp" alt="Galaxy X20 Ultra 5G" class="product-card__image" loading="lazy" />
+            <button class="product-card__fav trigger-wishlist" onclick="event.stopPropagation(); StacklyStore.toggleWishlist('p-phone-1')">❤️</button>
+            <div class="product-card__overlay">
+              <button class="btn btn-secondary btn-sm" onclick="StacklyStore.openQuickView('p-phone-1')">Quick View</button>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__category" style="display:flex;justify-content:space-between">
+              <span>Smartphones · Electronics</span>
+              <span style="color:#10b981;font-weight:700">★ 4.8</span>
+            </div>
+            <h3 class="product-card__name" onclick="StacklyStore.openQuickView('p-phone-1')" style="cursor:pointer">Galaxy X20 Ultra 5G 256GB Titanium</h3>
+            <div class="product-card__rating">
+              <span style="color:#FBBF24">★★★★★</span>
+              <span style="color:rgba(255,255,255,0.5)">(3,410 reviews)</span>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__price">₹74,999</span>
+                <span class="product-card__original-price">₹89,999</span>
+              </div>
+              <button class="btn btn-primary btn-sm magnetic" onclick="window.location.href='404.html'">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4: Basmati Rice -->
+        <div class="product-card tilt-card shimmer-card reveal delay-3">
+          <div class="product-card__image-wrap">
+            <span class="product-card__badge" style="background:#0088CC">👑 AGED 2 YRS</span>
+            <img src="images/product-basmatirice.webp" alt="India Gate Basmati Rice" class="product-card__image" loading="lazy" />
+            <button class="product-card__fav trigger-wishlist" onclick="event.stopPropagation(); StacklyStore.toggleWishlist('p-groc-4')">❤️</button>
+            <div class="product-card__overlay">
+              <button class="btn btn-secondary btn-sm" onclick="StacklyStore.openQuickView('p-groc-4')">Quick View</button>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__category" style="display:flex;justify-content:space-between">
+              <span>Pantry Staples · Grocery</span>
+              <span style="color:#10b981;font-weight:700">★ 4.9</span>
+            </div>
+            <h3 class="product-card__name" onclick="StacklyStore.openQuickView('p-groc-4')" style="cursor:pointer">India Gate 2-Yr Aged Super Basmati (5kg)</h3>
+            <div class="product-card__rating">
+              <span style="color:#FBBF24">★★★★★</span>
+              <span style="color:rgba(255,255,255,0.5)">(2,150 reviews)</span>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__price">₹549</span>
+                <span class="product-card__original-price">₹799</span>
+              </div>
+              <button class="btn btn-primary btn-sm magnetic" onclick="window.location.href='404.html'">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5: Fashion Jacket -->
+        <div class="product-card tilt-card shimmer-card reveal">
+          <div class="product-card__image-wrap">
+            <span class="product-card__badge" style="background:#FF1361">🧥 TRENDING</span>
+            <img src="images/product-jacket.webp" alt="AeroTech Storm Jacket" class="product-card__image" loading="lazy" />
+            <button class="product-card__fav trigger-wishlist" onclick="event.stopPropagation(); StacklyStore.toggleWishlist('p-fash-1')">❤️</button>
+            <div class="product-card__overlay">
+              <button class="btn btn-secondary btn-sm" onclick="StacklyStore.openQuickView('p-fash-1')">Quick View</button>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__category" style="display:flex;justify-content:space-between">
+              <span>Outerwear · Fashion</span>
+              <span style="color:#10b981;font-weight:700">★ 4.8</span>
+            </div>
+            <h3 class="product-card__name" onclick="StacklyStore.openQuickView('p-fash-1')" style="cursor:pointer">AeroTech Water-Resistant Storm Jacket</h3>
+            <div class="product-card__rating">
+              <span style="color:#FBBF24">★★★★★</span>
+              <span style="color:rgba(255,255,255,0.5)">(620 reviews)</span>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__price">₹3,499</span>
+                <span class="product-card__original-price">₹5,999</span>
+              </div>
+              <button class="btn btn-primary btn-sm magnetic" onclick="window.location.href='404.html'">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6: Smart Air Fryer -->
+        <div class="product-card tilt-card shimmer-card reveal delay-1">
+          <div class="product-card__image-wrap">
+            <span class="product-card__badge" style="background:#F59E0B">🍳 CHEF EDITION</span>
+            <img src="images/product-airfryer.webp" alt="DualZone Smart Digital Air Fryer" class="product-card__image" loading="lazy" />
+            <button class="product-card__fav trigger-wishlist" onclick="event.stopPropagation(); StacklyStore.toggleWishlist('p-home-1')">❤️</button>
+            <div class="product-card__overlay">
+              <button class="btn btn-secondary btn-sm" onclick="StacklyStore.openQuickView('p-home-1')">Quick View</button>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__category" style="display:flex;justify-content:space-between">
+              <span>Kitchen Appliances · Home</span>
+              <span style="color:#10b981;font-weight:700">★ 4.9</span>
+            </div>
+            <h3 class="product-card__name" onclick="StacklyStore.openQuickView('p-home-1')" style="cursor:pointer">DualZone Smart Digital Air Fryer (8.5L)</h3>
+            <div class="product-card__rating">
+              <span style="color:#FBBF24">★★★★★</span>
+              <span style="color:rgba(255,255,255,0.5)">(1,120 reviews)</span>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__price">₹7,999</span>
+                <span class="product-card__original-price">₹13,999</span>
+              </div>
+              <button class="btn btn-primary btn-sm magnetic" onclick="window.location.href='404.html'">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7: Audio Headphones -->
+        <div class="product-card tilt-card shimmer-card reveal delay-2">
+          <div class="product-card__image-wrap">
+            <span class="product-card__badge" style="background:#0284C7">-40% OFF</span>
+            <img src="images/product-headphones.webp" alt="AuraSound Pro Headphones" class="product-card__image" loading="lazy" />
+            <button class="product-card__fav trigger-wishlist" onclick="event.stopPropagation(); StacklyStore.toggleWishlist('p-audio-1')">❤️</button>
+            <div class="product-card__overlay">
+              <button class="btn btn-secondary btn-sm" onclick="StacklyStore.openQuickView('p-audio-1')">Quick View</button>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__category" style="display:flex;justify-content:space-between">
+              <span>Hi-Res Audio · Electronics</span>
+              <span style="color:#10b981;font-weight:700">★ 4.7</span>
+            </div>
+            <h3 class="product-card__name" onclick="StacklyStore.openQuickView('p-audio-1')" style="cursor:pointer">AuraSound Pro Wireless ANC Headphones</h3>
+            <div class="product-card__rating">
+              <span style="color:#FBBF24">★★★★★</span>
+              <span style="color:rgba(255,255,255,0.5)">(1,820 reviews)</span>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__price">₹24,999</span>
+                <span class="product-card__original-price">₹41,990</span>
+              </div>
+              <button class="btn btn-primary btn-sm magnetic" onclick="window.location.href='404.html'">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8: Beauty Serum -->
+        <div class="product-card tilt-card shimmer-card reveal delay-3">
+          <div class="product-card__image-wrap">
+            <span class="product-card__badge" style="background:#EC4899">✨ RADIANCE</span>
+            <img src="images/product-serum.webp" alt="Hyaluronic Acid Serum" class="product-card__image" loading="lazy" />
+            <button class="product-card__fav trigger-wishlist" onclick="event.stopPropagation(); StacklyStore.toggleWishlist('p-beauty-1')">❤️</button>
+            <div class="product-card__overlay">
+              <button class="btn btn-secondary btn-sm" onclick="StacklyStore.openQuickView('p-beauty-1')">Quick View</button>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__category" style="display:flex;justify-content:space-between">
+              <span>Skincare · Beauty</span>
+              <span style="color:#10b981;font-weight:700">★ 4.9</span>
+            </div>
+            <h3 class="product-card__name" onclick="StacklyStore.openQuickView('p-beauty-1')" style="cursor:pointer">Hyaluronic Acid 2% + B5 Serum (50ml)</h3>
+            <div class="product-card__rating">
+              <span style="color:#FBBF24">★★★★★</span>
+              <span style="color:rgba(255,255,255,0.5)">(1,890 reviews)</span>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__price">₹649</span>
+                <span class="product-card__original-price">₹999</span>
+              </div>
+              <button class="btn btn-primary btn-sm magnetic" onclick="window.location.href='404.html'">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:3.5rem" class="reveal">
+        <button class="btn btn-outline btn-lg magnetic" onclick="window.location.href='404.html'">View All 100,000+ Products →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ MULTI-DEPARTMENT FLASH SALE ══ -->
+  <section class="section flash-sale" id="flash-sale" aria-label="Flash sale deals">
+    <div class="container">
+      <div class="flash-sale-header">
+        <div class="flash-sale-badge">
+          <div class="flash-icon">⚡</div>
+          <div>
+            <h2 class="flash-sale-title">Multiverse <span style="background:linear-gradient(135deg,#F97316,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Flash Sale</span></h2>
+            <p class="flash-sale-subtitle">Strictly limited stock across Tech, Gourmet Groceries & Outerwear!</p>
+          </div>
+        </div>
+
+        <!-- Real-Time Countdown Timer -->
+        <div class="flash-countdown-wrap" data-countdown>
+          <div class="flash-countdown-label">Ends In:</div>
+          <div class="flash-countdown-boxes">
+            <div class="flash-time-box">
+              <span class="flash-time-val" data-unit="days">02</span>
+              <span class="flash-time-lbl">Days</span>
+            </div>
+            <span class="flash-time-sep">:</span>
+            <div class="flash-time-box">
+              <span class="flash-time-val" data-unit="hours">11</span>
+              <span class="flash-time-lbl">Hours</span>
+            </div>
+            <span class="flash-time-sep">:</span>
+            <div class="flash-time-box">
+              <span class="flash-time-val" data-unit="minutes">45</span>
+              <span class="flash-time-lbl">Mins</span>
+            </div>
+            <span class="flash-time-sep">:</span>
+            <div class="flash-time-box">
+              <span class="flash-time-val" data-unit="seconds">30</span>
+              <span class="flash-time-lbl">Secs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flash Deals Grid (Strict 4-Column Equal-Height Alignment) -->
+      <div class="flash-deals-grid">
+        
+        <!-- Deal 1: Gaming Laptop (Tech) -->
+        <div class="flash-deal reveal tilt-card shimmer-card">
+          <div class="flash-deal__image">
+            <span class="flash-deal__discount" style="background:linear-gradient(135deg,#EF4444,#F97316)">🔥 50% OFF</span>
+            <img src="images/product-laptop.webp" alt="IdeaPad Gaming 5i RTX 4060 Laptop" loading="lazy" />
+          </div>
+          <div class="flash-deal__body">
+            <div class="flash-deal__brand">Lenovo · High-Performance Tech</div>
+            <h3 class="flash-deal__name" onclick="StacklyStore.openQuickView('p-deal-1')">IdeaPad Gaming 5i RTX 4060 (16GB, 1TB SSD)</h3>
+            <div class="flash-deal__prices">
+              <span class="price-current" style="color:#22D3EE">₹62,999</span>
+              <span class="price-original">₹1,25,999</span>
+              <span class="price-badge" style="color:#22D3EE;background:rgba(34,211,238,0.15)">-50%</span>
+            </div>
+            <div class="flash-deal__stock">
+              <div class="flash-deal__progress-label"><span>Sold: 89%</span><span style="color:#F97316">⚡ Only 27 left!</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:89%;background:linear-gradient(90deg,#F97316,#EC4899)"></div></div>
+            </div>
+            <button class="btn-buy" style="background:linear-gradient(135deg,#F97316,#EC4899)" onclick="window.location.href='404.html'">Instant Checkout ⚡</button>
+          </div>
+        </div>
+
+        <!-- Deal 2: Cold Pressed Olive Oil (Grocery) -->
+        <div class="flash-deal reveal tilt-card shimmer-card delay-1">
+          <div class="flash-deal__image">
+            <span class="flash-deal__discount" style="background:linear-gradient(135deg,#10B981,#06B6D4)">🌿 28% OFF</span>
+            <img src="images/product-oliveoil.webp" alt="Cold-Pressed Extra Virgin Olive Oil" loading="lazy" />
+          </div>
+          <div class="flash-deal__body">
+            <div class="flash-deal__brand">San Giuliano · Gourmet Grocery</div>
+            <h3 class="flash-deal__name" onclick="StacklyStore.openQuickView('p-groc-6')">Cold-Pressed Extra Virgin Olive Oil (750ml)</h3>
+            <div class="flash-deal__prices">
+              <span class="price-current" style="color:#10B981">₹890</span>
+              <span class="price-original">₹1,250</span>
+              <span class="price-badge" style="color:#10B981;background:rgba(16,185,129,0.15)">-28%</span>
+            </div>
+            <div class="flash-deal__stock">
+              <div class="flash-deal__progress-label"><span>Sold: 94%</span><span style="color:#10B981">🌿 Fresh Press</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:94%;background:linear-gradient(90deg,#10B981,#06B6D4)"></div></div>
+            </div>
+            <button class="btn-buy" style="background:linear-gradient(135deg,#10B981,#06B6D4)" onclick="window.location.href='404.html'">Instant Checkout ⚡</button>
+          </div>
+        </div>
+
+        <!-- Deal 3: Raw Mountain Honey (Organic) -->
+        <div class="flash-deal reveal tilt-card shimmer-card delay-2">
+          <div class="flash-deal__image">
+            <span class="flash-deal__discount" style="background:linear-gradient(135deg,#F59E0B,#F97316)">🍯 27% OFF</span>
+            <img src="images/product-honey.webp" alt="Himalayan Wildflower Raw Honey" loading="lazy" />
+          </div>
+          <div class="flash-deal__body">
+            <div class="flash-deal__brand">Pure Hive · 100% Unfiltered</div>
+            <h3 class="flash-deal__name" onclick="StacklyStore.openQuickView('p-groc-5')">Himalayan Wildflower Raw Mountain Honey (500g)</h3>
+            <div class="flash-deal__prices">
+              <span class="price-current" style="color:#F59E0B">₹380</span>
+              <span class="price-original">₹520</span>
+              <span class="price-badge" style="color:#F59E0B;background:rgba(245,158,11,0.15)">-27%</span>
+            </div>
+            <div class="flash-deal__stock">
+              <div class="flash-deal__progress-label"><span>Sold: 84%</span><span style="color:#F59E0B">🍯 Pure Hive</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:84%;background:linear-gradient(90deg,#F59E0B,#F97316)"></div></div>
+            </div>
+            <button class="btn-buy" style="background:linear-gradient(135deg,#F59E0B,#F97316)" onclick="window.location.href='404.html'">Instant Checkout ⚡</button>
+          </div>
+        </div>
+
+        <!-- Deal 4: AeroTech Storm Jacket (Outerwear) -->
+        <div class="flash-deal reveal tilt-card shimmer-card delay-3">
+          <div class="flash-deal__image">
+            <span class="flash-deal__discount" style="background:linear-gradient(135deg,#FF1361,#0284C7)">🧥 42% OFF</span>
+            <img src="images/product-jacket.webp" alt="AeroTech Water-Resistant Storm Jacket" loading="lazy" />
+          </div>
+          <div class="flash-deal__body">
+            <div class="flash-deal__brand">North Peak · Performance Outerwear</div>
+            <h3 class="flash-deal__name" onclick="StacklyStore.openQuickView('p-fash-1')">AeroTech Water-Resistant Storm Jacket</h3>
+            <div class="flash-deal__prices">
+              <span class="price-current" style="color:#FF1361">₹3,499</span>
+              <span class="price-original">₹5,999</span>
+              <span class="price-badge" style="color:#FF1361;background:rgba(255,19,97,0.15)">-42%</span>
+            </div>
+            <div class="flash-deal__stock">
+              <div class="flash-deal__progress-label"><span>Sold: 76%</span><span style="color:#FB7185">⚡ Limited Run</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:76%;background:linear-gradient(90deg,#FF1361,#0284C7)"></div></div>
+            </div>
+            <button class="btn-buy" style="background:linear-gradient(135deg,#FF1361,#0284C7)" onclick="window.location.href='404.html'">Instant Checkout ⚡</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ MULTIVERSE ADVANTAGES ══ -->
+  <section class="section why-choose" id="why-us" aria-label="Why choose Stackly Multiverse">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Hypermarket Infrastructure</div>
+        <h2 class="section-title">The <span class="highlight">Stackly Standard</span></h2>
+        <p class="section-subtitle">Revolutionizing retail with high-speed micro-fulfillment, verified sourcing, and concierge care</p>
+      </div>
+
+      <div class="why-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem">
+        <div>
+          <div class="why-feature reveal reveal-left">
+            <div class="why-feature-icon" style="background:linear-gradient(135deg,#0284C7,#FF1361)">⚡</div>
+            <div class="why-feature-body">
+              <h4>15-Minute Hyper-Speed Delivery</h4>
+              <p>AI-routed local dark stores deliver your daily groceries, urgent tech cords, and daily essentials within 15 minutes across 50+ metro cities.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal reveal-left delay-1">
+            <div class="why-feature-icon" style="background:linear-gradient(135deg,#10B981,#06B6D4)">🛡️</div>
+            <div class="why-feature-body">
+              <h4>100% Genuine Authorized Sourcing</h4>
+              <p>Every product is sourced straight from official manufacturer brands with tamper-proof security seals and up to 2-year warranty protection.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal reveal-left delay-2">
+            <div class="why-feature-icon" style="background:linear-gradient(135deg,#EC4899,#F43F5E)">🔄</div>
+            <div class="why-feature-body">
+              <h4>Try-At-Home & 15-Day Free Returns</h4>
+              <p>Try fashion outfits and shoes right at your doorstep with our courier waiting 10 minutes, or enjoy instant one-click return pickups with zero questions.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal reveal-left delay-3">
+            <div class="why-feature-icon" style="background:linear-gradient(135deg,#F59E0B,#F97316)">💳</div>
+            <div class="why-feature-body">
+              <h4>Flexible 256-Bit SSL Payments & EMI</h4>
+              <p>Support for instant UPI, zero-cost EMI across 24+ banks, international cards, and Cash on Delivery with OTP verification.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="stats-showcase" style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+            <div class="stat-showcase-card reveal reveal-scale" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.75rem;text-align:center">
+              <div class="stat-showcase-icon" style="font-size:2rem;margin-bottom:0.5rem">📦</div>
+              <div class="stat-showcase-num" style="font-size:2rem;font-weight:900;color:#60A5FA" data-counter data-target="100" data-suffix="K+" data-duration="2000">100K+</div>
+              <div class="stat-showcase-desc" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">Verified Products</div>
+            </div>
+            <div class="stat-showcase-card reveal reveal-scale delay-1" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.75rem;text-align:center">
+              <div class="stat-showcase-icon" style="font-size:2rem;margin-bottom:0.5rem">😊</div>
+              <div class="stat-showcase-num" style="font-size:2rem;font-weight:900;color:#10B981" data-counter data-target="2.5" data-suffix="M+" data-duration="2000" data-decimals="1">2.5M+</div>
+              <div class="stat-showcase-desc" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">Happy Customers</div>
+            </div>
+            <div class="stat-showcase-card reveal reveal-scale delay-2" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.75rem;text-align:center">
+              <div class="stat-showcase-icon" style="font-size:2rem;margin-bottom:0.5rem">🏬</div>
+              <div class="stat-showcase-num" style="font-size:2rem;font-weight:900;color:#A78BFA" data-counter data-target="500" data-suffix="+" data-duration="1800">500+</div>
+              <div class="stat-showcase-desc" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">Global Brand Partners</div>
+            </div>
+            <div class="stat-showcase-card reveal reveal-scale delay-3" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.75rem;text-align:center">
+              <div class="stat-showcase-icon" style="font-size:2rem;margin-bottom:0.5rem">⭐</div>
+              <div class="stat-showcase-num" style="font-size:2rem;font-weight:900;color:#FBBF24" data-counter data-target="4.9" data-suffix="★" data-duration="1500" data-decimals="1">4.9★</div>
+              <div class="stat-showcase-desc" style="font-size:0.8rem;color:rgba(255,255,255,0.5)">Overall Rating</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap" class="reveal">
+            <span class="tag tag-blue">✓ AI-Route Dispatch</span>
+            <span class="tag tag-cyan">✓ Cold-Chain Certified</span>
+            <span class="tag tag-purple">✓ 256-Bit SSL Protected</span>
+            <span class="tag tag-orange">✓ 24/7 Concierge Care</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ TOP BRANDS MARQUEE ══ -->
+  <section class="section brands-section" id="brands" aria-label="Official Partner Brands" style="background:#0A0B0E;padding:4rem 0">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Global Authenticity</div>
+        <h2 class="section-title">500+ Top <span class="highlight">Partner Brands</span></h2>
+        <p class="section-subtitle">Direct manufacturer integration ensures uncompromised quality and official warranty support</p>
+      </div>
+
+      <div class="brand-logos-grid">
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Apple');" title="Browse Apple Products"><span class="brand-name">Apple</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Samsung');" title="Browse Samsung Products"><span class="brand-name">Samsung</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Sony');" title="Browse Sony Products"><span class="brand-name">Sony</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Nike');" title="Browse Nike Products"><span class="brand-name">Nike</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Amul');" title="Browse Amul Products"><span class="brand-name">Amul</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Dyson');" title="Browse Dyson Products"><span class="brand-name">Dyson</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Fortune');" title="Browse Fortune Products"><span class="brand-name">Fortune</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Adidas');" title="Browse Adidas Products"><span class="brand-name">Adidas</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Philips');" title="Browse Philips Products"><span class="brand-name">Philips</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('India Gate');" title="Browse India Gate Products"><span class="brand-name">India Gate</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Garmin');" title="Browse Garmin Products"><span class="brand-name">Garmin</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Bose');" title="Browse Bose Products"><span class="brand-name">Bose</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Puma');" title="Browse Puma Products"><span class="brand-name">Puma</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Lenovo');" title="Browse Lenovo Products"><span class="brand-name">Lenovo</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('Nestle');" title="Browse Nestlé Products"><span class="brand-name">Nestlé</span></div>
+        <div class="brand-item reveal tilt-card" onclick="StacklyStore.openSearch(); StacklyStore.filterSearch('L\'Oréal');" title="Browse L'Oréal Products"><span class="brand-name">L'Oréal</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ REAL CUSTOMER REVIEWS ══ -->
+  <section class="section reviews-section" id="reviews" aria-label="Customer Reviews">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Real Experiences</div>
+        <h2 class="section-title">What Shoppers <span class="highlight">Are Saying</span></h2>
+        <p class="section-subtitle">Over 2.5 million verified customers rely on Stackly across every walk of life</p>
+      </div>
+
+      <div class="reviews-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem">
+        
+        <div class="review-card reveal tilt-card" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.75rem">
+          <div class="stars" style="color:#FBBF24;margin-bottom:0.75rem">★★★★★</div>
+          <p class="review-text" style="font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.6">"I ordered a MacBook Pro for work and my weekly organic groceries in the exact same cart. The groceries arrived in 14 minutes, and the laptop was delivered by white-glove courier before noon! Stackly has completely replaced three other apps for me."</p>
+          <div class="reviewer" style="display:flex;align-items:center;gap:0.75rem;margin-top:1.25rem">
+            <div class="reviewer-avatar" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0284C7,#FF1361);display:flex;align-items:center;justify-content:center;font-weight:800">AK</div>
+            <div>
+              <div class="reviewer-name" style="font-weight:700;color:#fff">Arjun Kapoor</div>
+              <div class="reviewer-role" style="font-size:0.75rem;color:rgba(255,255,255,0.5)">Lead Software Architect, Bangalore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal tilt-card delay-1" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.75rem">
+          <div class="stars" style="color:#FBBF24;margin-bottom:0.75rem">★★★★★</div>
+          <p class="review-text" style="font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.6">"The Try-At-Home fashion feature is a game changer. I ordered two sizes of the North Peak storm jacket, tested the fit while the delivery executive waited, and returned the other immediately with zero deduction. True luxury service!"</p>
+          <div class="reviewer" style="display:flex;align-items:center;gap:0.75rem;margin-top:1.25rem">
+            <div class="reviewer-avatar" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#EC4899,#F43F5E);display:flex;align-items:center;justify-content:center;font-weight:800">PR</div>
+            <div>
+              <div class="reviewer-name" style="font-weight:700;color:#fff">Priya Rao</div>
+              <div class="reviewer-role" style="font-size:0.75rem;color:rgba(255,255,255,0.5)">Fashion Stylist & Creative Director, Mumbai</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal tilt-card delay-2" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.75rem">
+          <div class="stars" style="color:#FBBF24;margin-bottom:0.75rem">★★★★★</div>
+          <p class="review-text" style="font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.6">"Bought the DualZone Air Fryer and cold-pressed olive oils using promo code STACK60. Saved over ₹6,000 on my first order. Everything is authentic, well packaged in shockproof eco-friendly materials, and customer support answered in 30 seconds."</p>
+          <div class="reviewer" style="display:flex;align-items:center;gap:0.75rem;margin-top:1.25rem">
+            <div class="reviewer-avatar" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#10B981,#06B6D4);display:flex;align-items:center;justify-content:center;font-weight:800">VM</div>
+            <div>
+              <div class="reviewer-name" style="font-weight:700;color:#fff">Vikram Mehta</div>
+              <div class="reviewer-role" style="font-size:0.75rem;color:rgba(255,255,255,0.5)">Culinary Enthusiast, Hyderabad</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ MULTIVERSE EDITORIAL BLOG PREVIEWS ══ -->
+  <section class="section blog-section" id="blog" aria-label="Latest Lifestyle & Tech Editorial" style="background:#0A0B0E">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Editorial & Guides</div>
+        <h2 class="section-title">The <span class="highlight">Multiverse Journal</span></h2>
+        <p class="section-subtitle">Deep dives across technology reviews, organic living, capsule fashion, and home design</p>
+      </div>
+
+      <div class="blog-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem">
+        
+        <a href="blog.html" class="blog-card reveal tilt-card" aria-label="Read Laptop Guide">
+          <div class="blog-card__image" style="height:200px;overflow:hidden">
+            <img src="images/product-laptop.webp" alt="Laptop Buying Guide" style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#38BDF8">💻 Tech & Laptops</div>
+            <h3 class="blog-card__title">2026 Laptop Buying Guide: Apple M3 vs Intel Core Ultra</h3>
+            <p class="blog-card__excerpt">Benchmark breakdowns of battery efficiency, neural acceleration, and graphic workflows.</p>
+            <div class="blog-card__meta">
+              <span>⏱️ 7 min read</span>
+              <span>👁️ 24.5k views</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog.html" class="blog-card reveal tilt-card delay-1" aria-label="Read Farm to Table Guide">
+          <div class="blog-card__image" style="height:200px;overflow:hidden">
+            <img src="images/product-honey.webp" alt="Organic Honey and Oils" style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#10B981">🍏 Grocery & Nutrition</div>
+            <h3 class="blog-card__title">The Farm-to-Table Truth: Why Cold-Pressed Oils & Raw Honey Matter</h3>
+            <p class="blog-card__excerpt">Exploring cellular health benefits, live enzymes, and unheated extra virgin nutrition.</p>
+            <div class="blog-card__meta">
+              <span>⏱️ 5 min read</span>
+              <span>👁️ 18.2k views</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog.html" class="blog-card reveal tilt-card delay-2" aria-label="Read Capsule Fashion Guide">
+          <div class="blog-card__image" style="height:200px;overflow:hidden">
+            <img src="images/product-jacket.webp" alt="Capsule Wardrobe Streetwear" style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__category" style="color:#FB7185">👗 Fashion & Style</div>
+            <h3 class="blog-card__title">Minimalist Streetwear: Building a Capsule Wardrobe for 2026</h3>
+            <p class="blog-card__excerpt">How 8 durable, water-resistant garments can generate 30 distinct modern everyday looks.</p>
+            <div class="blog-card__meta">
+              <span>⏱️ 6 min read</span>
+              <span>👁️ 15.9k views</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ NEWSLETTER ══ -->
+  <section class="section newsletter-section" aria-label="Newsletter Subscription" style="background:linear-gradient(135deg,rgba(2,132,199,0.08),rgba(255,19,97,0.08));border-top:1px solid rgba(255,255,255,0.08)">
+    <div class="container" style="max-width:800px;text-align:center">
+      <div class="section-label reveal">Stay Ahead</div>
+      <h2 class="section-title reveal delay-1" style="margin-bottom:0.75rem">Unlock <span class="highlight">₹1,500 Off</span> Your First Order</h2>
+      <p class="section-subtitle reveal delay-2" style="margin-bottom:2rem">Subscribe to the Multiverse Dispatch for flash drop alerts, member secret sales, and fresh stock drops.</p>
+      
+      <form onsubmit="event.preventDefault(); showToast('🎉 Welcome to Stackly Multiverse! Check your inbox for your ₹1,500 coupon code.', 'success'); this.reset();" style="display:flex;gap:0.75rem;max-width:520px;margin:0 auto" class="reveal delay-3">
+        <input type="email" placeholder="Enter your email address..." required style="flex:1;padding:0.85rem 1.25rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-family:inherit" />
+        <button type="submit" class="btn btn-primary magnetic" style="white-space:nowrap">Subscribe 🚀</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ FOOTER ══ -->
+    <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a href="index.html" class="logo" id="footer-brand-logo" aria-label="Stackly Home">
+              <img class="logo-img" src="images/stackly-logo.webp" alt="Stackly Logo" style="height:44px">
+            </a>
+            <p class="footer__desc">India's most trusted premium electronics store. We bring you the best in tech with genuine products, amazing prices, and world-class service.</p>
+            <div class="footer-socials" aria-label="Social media links">
+              <a href="404.html" class="social-btn" aria-label="Facebook">f</a>
+              <a href="404.html" class="social-btn" aria-label="Twitter/X">𝕏</a>
+              <a href="404.html" class="social-btn" aria-label="Instagram">📸</a>
+              <a href="404.html" class="social-btn" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Quick Links</h3>
+            <nav class="footer__links">
+              <a href="index.html" class="footer__link">Home</a>
+              <a href="about.html" class="footer__link">About Us</a>
+              <a href="services.html" class="footer__link">Services</a>
+              <a href="blog.html" class="footer__link">Blog</a>
+              <a href="contact.html" class="footer__link">Contact</a>
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Categories</h3>
+            <nav class="footer__links">
+              <a href="404.html" class="footer__link">Laptops & Computers</a>
+              <a href="404.html" class="footer__link">Smartphones</a>
+              <a href="404.html" class="footer__link">Audio & Headphones</a>
+              <a href="404.html" class="footer__link">Wearables</a>
+              <a href="404.html" class="footer__link">Gaming</a>
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="footer__col-title">Contact Us</h3>
+            <div class="footer__links">
+              <a href="404.html" class="footer__link">📍 42, Tech Hub, Koramangala, Bangalore</a>
+              <a href="404.html" class="footer__link">📞 +91 800 123 4567</a>
+              <a href="404.html" class="footer__link">✉️ support@stackly.in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Stackly Electronics Pvt. Ltd. All rights reserved.</p>
+        <nav class="footer__bottom-links">
+          <a href="404.html" class="footer__bottom-link">Privacy Policy</a>
+          <a href="404.html" class="footer__bottom-link">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" id="back-to-top">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/core.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/store-engine.js"></script>
+</body>
+</html>

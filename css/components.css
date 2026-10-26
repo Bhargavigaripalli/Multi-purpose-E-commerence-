@@ -709,10 +709,10 @@ body.has-deals-bar .hero {
   padding-top: calc(var(--nav-height, 74px) + 52px) !important;
 }
 
-/* ── FOOTER ── */
+/* ── FOOTER (HIGH BRIGHTNESS & CRYSTAL CLEAR CONTRAST) ── */
 .footer {
-  background: var(--navy-950);
-  border-top: var(--border-glass);
+  background: #080A10;
+  border-top: 1px solid rgba(2, 132, 199, 0.28);
   position: relative;
   overflow: hidden;
 }
@@ -720,7 +720,7 @@ body.has-deals-bar .hero {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 30% 0%, rgba(2,132,199,0.08) 0%, transparent 50%),
+  background: radial-gradient(ellipse at 30% 0%, rgba(2,132,199,0.1) 0%, transparent 50%),
               radial-gradient(ellipse at 70% 100%, rgba(255,19,97,0.08) 0%, transparent 50%);
   pointer-events: none;
 }
@@ -735,9 +735,10 @@ body.has-deals-bar .hero {
 .footer__brand .logo { margin-bottom: var(--space-4); }
 .footer__desc {
   font-size: var(--text-sm);
-  color: var(--white-50);
+  color: rgba(255, 255, 255, 0.9); /* High brightness description */
   line-height: 1.75;
   margin-bottom: var(--space-6);
+  font-weight: 400;
 }
 .footer-socials {
   display: flex;
@@ -746,12 +747,12 @@ body.has-deals-bar .hero {
 .social-btn {
   width: 40px; height: 40px;
   border-radius: var(--radius-md);
-  border: var(--border-glass);
-  background: var(--glass-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white-50);
+  color: #FFFFFF; /* Bright white social icons */
   transition: all var(--transition-base);
   font-size: 1rem;
   text-decoration: none;
@@ -759,16 +760,16 @@ body.has-deals-bar .hero {
 .social-btn:hover {
   background: var(--grad-primary);
   border-color: transparent;
-  color: var(--white);
+  color: #FFFFFF;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(2,132,199,0.4);
 }
 .footer__col-title {
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--white);
+  color: #FFFFFF; /* Pure vibrant white headers */
   margin-bottom: var(--space-5);
   position: relative;
   padding-left: 1rem;
@@ -779,13 +780,14 @@ body.has-deals-bar .hero {
   left: 0; top: 50%;
   transform: translateY(-50%);
   width: 3px; height: 16px;
-  background: var(--grad-primary);
+  background: linear-gradient(180deg, #38BDF8, #0284C7);
   border-radius: var(--radius-full);
 }
 .footer__links { display: flex; flex-direction: column; gap: var(--space-3); }
 .footer__link {
   font-size: var(--text-sm);
-  color: var(--white-50);
+  color: rgba(255, 255, 255, 0.88); /* Bright, sharp link text */
+  font-weight: 500;
   transition: all var(--transition-fast);
   display: flex;
   align-items: center;
@@ -793,17 +795,19 @@ body.has-deals-bar .hero {
   text-decoration: none;
 }
 .footer__link:hover {
-  color: var(--cyan-400);
+  color: #38BDF8; /* Cyan glow on hover */
   transform: translateX(4px);
 }
 .footer__link::before {
   content: '›';
-  color: var(--blue-400);
+  color: #38BDF8; /* Bright electric cyan marker */
+  font-weight: 700;
+  font-size: 1.1rem;
   transition: transform var(--transition-fast);
 }
 .footer__link:hover::before { transform: translateX(3px); }
 .footer__bottom {
-  border-top: var(--border-glass);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   padding: var(--space-6) 0;
   display: flex;
   align-items: center;
@@ -813,7 +817,8 @@ body.has-deals-bar .hero {
 }
 .footer__copy {
   font-size: var(--text-sm);
-  color: var(--white-40);
+  color: rgba(255, 255, 255, 0.82); /* Bright copyright notice */
+  font-weight: 500;
 }
 .footer__bottom-links {
   display: flex;
@@ -821,11 +826,12 @@ body.has-deals-bar .hero {
 }
 .footer__bottom-link {
   font-size: var(--text-sm);
-  color: var(--white-40);
+  color: rgba(255, 255, 255, 0.82); /* Bright bottom policy links */
+  font-weight: 500;
   transition: color var(--transition-fast);
   text-decoration: none;
 }
-.footer__bottom-link:hover { color: var(--cyan-400); }
+.footer__bottom-link:hover { color: #38BDF8; }
 
 /* ── BADGES / TAGS ── */
 .tag {
